@@ -75,6 +75,20 @@ packer.startup({
         -- UI enhanced
         use { "onsails/lspkind-nvim" }
 
+        -- Comment
+        use {
+            'numToStr/Comment.nvim',
+            config = function()
+                require('Comment').setup()
+            end
+        }
+
+        -- Autopair
+        use {
+            "windwp/nvim-autopairs",
+            config = function() require("nvim-autopairs").setup {} end
+        }
+
         -- markdown preview
         use({
             "iamcco/markdown-preview.nvim",

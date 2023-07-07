@@ -6,3 +6,9 @@
 sudo ln -s $PWD/nvim ~/.config/nvim
 ```
 
+也有的配置文件存储在 `HOME` 目录下, 如
+
+```bash
+sudo ln -s $PWD/.tmux.conf ~/.tmux.conf
+```
+

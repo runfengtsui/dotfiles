@@ -8,6 +8,7 @@ local opt = {noremap = true, silent = true }
 
 -- <Esc>
 map("i", "jk", "<Esc>", opt)
+map("n", ";", ":", opt)
 
 -- 取消 s 默认功能(删除一个字符转入插入模式)
 map("n", "s", "", opt)
@@ -65,8 +66,9 @@ map("t", "<A-l>", "<Cmd> wincmd l<CR>", opt)
 map("t", "<A-h>", "<Cmd> wincmd h<CR>", opt)
 map("t", "<A-j>", "<Cmd> wincmd j<CR>", opt)
 map("t", "<A-k>", "<Cmd> wincmd k<CR>", opt)
-map("n", "<leader>c", ":ToggleTermSendCurrentLine<CR>", opt)
-map("v", "<leader>c", ":'<,'>ToggleTermSendVisualLines<CR>", opt)
+map("n", "<A-r>", ":ToggleTermSendCurrentLine<CR>", opt)
+map("i", "<A-r>", "<Esc>:ToggleTermSendCurrentLine<CR>a", opt)
+map("v", "<A-r>", ":'<,'>ToggleTermSendVisualLines<CR>", opt)
 
 -- bufferline
 -- 左右 Tab 切换

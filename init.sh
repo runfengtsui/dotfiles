@@ -62,6 +62,9 @@ curl -sSL https://install.python-poetry.org | python3 -
 # enable tab completion for Fish
 # poetry completions fish > ~/.config/fish/commpletions/poetry.fish
 
+# juliaup
+curl -fsSL https://install.julialang.org | sh
+
 # tree
 apt -y install tree
 

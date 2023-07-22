@@ -44,7 +44,7 @@ apt -y remove vim vim-tiny vim-runtime vim-common
 curl -fsSL https://xmake.io/shget.text | bash
 
 # Fish
-apt install fish
+apt -y install fish
 # configuration for Fish Shell
 if [[ -d $HOME/.config/fish ]]; then
     rm -r $HOME/.config/fish

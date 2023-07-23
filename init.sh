@@ -1,74 +1,127 @@
 #!/usr/bin/env bash
 # path of dotfiles
-HOME_PATH=/home/tsui
-CONFIG_PATH=$HOME_PATH/dotfiles
+CONFIG_PATH=$HOME/dotfiles
+
+# clash-for-linux
+cd $HOME/Documents/Repositories/clash-for-linux
+sudo bash start.sh
+source /etc/profile.d/clash.sh
+proxy_on
 
 # NerdFonts
 # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
 # Install NerdFonts
-cp $CONFIG_PATH/FiraCode/FiraCodeNerdFont-*.ttf /usr/share/fonts/
-cd /usr/share/fonts
-sudo mkfontscale
-sudo mkfontdir
-fc-cache -fv
-cd $CONFIG_PATH
+if [[ ! -f /usr/share/fonts/FiraCodeNerdFont-Regular.ttf ]]; then
+    sudo cp $CONFIG_PATH/FiraCode/FiraCodeNerdFont-*.ttf /usr/share/fonts/
+    cd /usr/share/fonts
+    sudo mkfontscale
+    sudo mkfontdir
+    sudo fc-cache -fv
+    cd $CONFIG_PATH
+else
+    echo "FiraCodeNerdFont have been installed!"
+fi
 
 # ranger with highlight
-apt -y install ranger highlight
-if [[ -d $HOME_PATH/.config/ranger ]]; then
-    rm -r $HOME_PATH/.config/ranger
+if ! command -v ranger >/dev/null 2>&1; then
+    sudo apt -y install ranger highlight
+    if [[ -d $HOME/.config/ranger ]]; then
+        rm -r $HOME/.config/ranger
+    fi
+    ln -s $CONFIG_PATH/ranger $HOME/.config/ranger
+else
+    echo "ranger has been installed!"
 fi
-ln -s $CONFIG_PATH/ranger $HOME_PATH/.config/ranger
 
 # build prerequisites
-apt -y install ninja-build gettext cmake unzip curl
+sudo apt -y install ninja-build gettext cmake unzip curl
 # NeoVim
-cd $HOME_PATH/Documents/Repositories
-git clone git@github.com:neovim/neovim.git
-cd neovim; git checkout stable
-make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/opt/nvim
-make install
-ln -s /opt/nvim/bin/nvim /usr/bin/nvim
-# Packer.nvim
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- $HOME_PATH/.local/share/nvim/site/pack/packer/start/packer.nvim
-# npm to install Neovim's plugins
-apt -y install npm
-npm install n -g
-n stable
-# configuration for NeoVim
-ln -s $CONFIG_PATH/nvim $HOME_PATH/.config/nvim
+if [[ ! -d $HOME/Documents/Repositories/neovim ]]; then
+    git clone git@github.com:neovim/neovim.git $HOME/Documents/Repositories/neovim
+else
+    echo "neovim repository has been cloned!"
+fi
+if ! command -v nvim >/dev/null 2>&1; then
+    cd $HOME/Documents/Repositories/neovim
+    git checkout stable
+    make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/opt/nvim
+    sudo make install
+    if [[ -f /opt/nvim/bin/nvim ]]; then
+        sudo ln -s /opt/nvim/bin/nvim /usr/bin/nvim
+    fi
+    # Packer.nvim
+    if [[ ! -f $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
+        git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+    fi
+    if command -v nvim >/dev/null 2>&1; then
+        # configuration for NeoVim
+        ln -s $CONFIG_PATH/nvim $HOME/.config/nvim
+    else
+        echo "nvim install failed!"
+    fi
+else
+    echo "nvim has been installed!"
+fi
 # remove vi, vim
-apt -y remove vim vim-tiny vim-runtime vim-common
+if command -v nvim >/dev/null 2>&1; then
+    sudo apt -y remove vim vim-tiny vim-runtime vim-common
+fi
+# npm to install Neovim's plugins
+if ! command -v npm >/dev/null 2>&1; then
+    sudo apt -y install npm
+    sudo npm install n -g
+    sudo n stable
+else
+    echo "npm and node have been installed!"
+fi
 
 # xmake
-curl -fsSL https://xmake.io/shget.text | bash
+if ! command -v xmake >/dev/null 2>&1; then
+    curl -fsSL https://xmake.io/shget.text | bash
+else
+    echo "xmake has been installed!"
+fi
 
 # Fish
-apt -y install fish
-# configuration for Fish Shell
-if [[ -d $HOME_PATH/.config/fish ]]; then
-    rm -r $HOME_PATH/.config/fish
-fi
-ln -s CONFIG_PATH/fish $HOME_PATH/.config/fish
+sudo apt -y install fish
 # oh-my-fish
-curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
-fish install --path=~/.local/share/omf --config=~/.config/omf
-rm install
+if ! command -v omf >/dev/null 2>&1; then
+    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
+    fish install --path=~/.local/share/omf --config=~/.config/omf
+    rm install
+else
+    echo "omf has been installed!"
+fi
 # install Fish Shell theme Bobthefish
-omf install bobthefish
+if command -v omf >/dev/null 2>&1; then
+    omf install bobthefish
+    # configuration for Fish Shell
+    if [[ -d $HOME/.config/fish ]]; then
+        rm -r $HOME/.config/fish
+    fi
+    ln -s CONFIG_PATH/fish $HOME/.config/fish
+fi
 
 # poetry
-curl -sSL https://install.python-poetry.org | python3 -
+if ! command -v poetry >/dev/null 2>&1; then
+    curl -sSL https://install.python-poetry.org | python3 -
+else
+    echo "poetry has been installed!"
+fi
 # enable tab completion for Fish
 # poetry completions fish > ~/.config/fish/commpletions/poetry.fish
 
 # juliaup
-curl -fsSL https://install.julialang.org | sh
+if ! command -v juliaup >/dev/null 2>&1; then
+    curl -fsSL https://install.julialang.org | sh
+else
+    echo "juliaup has been installed!"
+fi
 
 # tree
-apt -y install tree
+sudo apt -y install tree
 
 # autoremove
-apt autoremove
+sudo apt -y autoremove
 

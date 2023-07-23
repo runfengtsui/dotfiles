@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # path of dotfiles
-CONFIG_PATH=$PWD
+HOME_PATH=/home/tsui
+CONFIG_PATH=$HOME_PATH/dotfiles
 
 # NerdFonts
 # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
@@ -14,15 +15,15 @@ cd $CONFIG_PATH
 
 # ranger with highlight
 apt -y install ranger highlight
-if [[ -d $HOME/.config/ranger ]]; then
-    rm -r $HOME/.config/ranger
+if [[ -d $HOME_PATH/.config/ranger ]]; then
+    rm -r $HOME_PATH/.config/ranger
 fi
-ln -s $CONFIG_PATH/ranger $HOME/.config/ranger
+ln -s $CONFIG_PATH/ranger $HOME_PATH/.config/ranger
 
 # build prerequisites
 apt -y install ninja-build gettext cmake unzip curl
 # NeoVim
-cd $HOME/Documents/Repositories
+cd $HOME_PATH/Documents/Repositories
 git clone git@github.com:neovim/neovim.git
 cd neovim; git checkout stable
 make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/opt/nvim
@@ -30,13 +31,13 @@ make install
 ln -s /opt/nvim/bin/nvim /usr/bin/nvim
 # Packer.nvim
 git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+ $HOME_PATH/.local/share/nvim/site/pack/packer/start/packer.nvim
 # npm to install Neovim's plugins
 apt -y install npm
 npm install n -g
 n stable
 # configuration for NeoVim
-ln -s $CONFIG_PATH/nvim $HOME/.config/nvim
+ln -s $CONFIG_PATH/nvim $HOME_PATH/.config/nvim
 # remove vi, vim
 apt -y remove vim vim-tiny vim-runtime vim-common
 
@@ -46,17 +47,16 @@ curl -fsSL https://xmake.io/shget.text | bash
 # Fish
 apt -y install fish
 # configuration for Fish Shell
-if [[ -d $HOME/.config/fish ]]; then
-    rm -r $HOME/.config/fish
+if [[ -d $HOME_PATH/.config/fish ]]; then
+    rm -r $HOME_PATH/.config/fish
 fi
-ln -s CONFIG_PATH/fish $HOME/.config/fish
+ln -s CONFIG_PATH/fish $HOME_PATH/.config/fish
 # oh-my-fish
 curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
 fish install --path=~/.local/share/omf --config=~/.config/omf
 rm install
 # install Fish Shell theme Bobthefish
 omf install bobthefish
-
 
 # poetry
 curl -sSL https://install.python-poetry.org | python3 -

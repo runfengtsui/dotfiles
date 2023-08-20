@@ -2,12 +2,6 @@
 # path of dotfiles
 CONFIG_PATH=$HOME/dotfiles
 
-# clash-for-linux
-cd $HOME/Documents/Repositories/clash-for-linux
-sudo bash start.sh
-source /etc/profile.d/clash.sh
-proxy_on
-
 # NerdFonts
 # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
 # Install NerdFonts
@@ -48,11 +42,6 @@ if ! command -v nvim >/dev/null 2>&1; then
     sudo make install
     if [[ -f /opt/nvim/bin/nvim ]]; then
         sudo ln -s /opt/nvim/bin/nvim /usr/bin/nvim
-    fi
-    # Packer.nvim
-    if [[ ! -f $HOME/.local/share/nvim/site/pack/packer/start/packer.nvim ]]; then
-        git clone --depth 1 https://github.com/wbthomason/packer.nvim\
-         ~/.local/share/nvim/site/pack/packer/start/packer.nvim
     fi
     if command -v nvim >/dev/null 2>&1; then
         # configuration for NeoVim

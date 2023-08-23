@@ -12,7 +12,7 @@ return {
     end,
     open_mapping = [[<c-\>]],
     start_in_insert = true,
-    direction = "float",
+    direction = "horizontal",
   },
 }
 

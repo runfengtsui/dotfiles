@@ -16,5 +16,10 @@ vim.g.mkdp_echo_preview_url = 1
 vim.g.mkdp_port = "8888"
 
 -- vim-table-mode plugin config
--- vim.g.loaded_table_mode = 1
+vim.g.loaded_table_mode = 1
+
+-- Run markdown file, i.e., markdown preview
+vim.keymap.set("n", "<C-r>", function ()
+  vim.api.nvim_command("MarkdownPreviewToggle")
+end, { noremap = true, silent = true })
 

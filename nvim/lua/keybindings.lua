@@ -80,9 +80,6 @@ map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
--- markdown preview
-map("n", "<C-p>", ":MarkdownPreviewToggle<CR>", opt)
-
 -- 插件快捷键
 local pluginKeys = {}
 

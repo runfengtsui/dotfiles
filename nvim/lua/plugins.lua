@@ -23,6 +23,7 @@ require("lazy").setup({
   require("plugins.mason"),
   require("plugins.autocomplete"),
   require("plugins.snippets"),
-  require("plugins.autopairs")
+  require("plugins.autopairs"),
+  require("plugins.latex"),
 })
 

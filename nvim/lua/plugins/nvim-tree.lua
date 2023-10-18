@@ -30,7 +30,7 @@ return {
       on_attach = my_on_attach,
       view = {
         width = 25,
-        hide_root_folder = false,
+        -- hide_root_folder = false,
         side = 'left',
         -- disable show number
         number = false,

@@ -7,12 +7,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   end
 })
 
-if vim.fn.has("wsl") then
-  local yank = vim.api.nvim_create_augroup("YANK", { clear = true })
-  vim.api.nvim_create_autocmd({ "TextYankPost " }, {
-    pattern = "*",
-    group = yank,
-    command = ":call system('/mnt/c/windows/system32/clip.exe ', @\")"
-  })
-end
+-- if vim.fn.has("wsl") then
+--   local yank = vim.api.nvim_create_augroup("YANK", { clear = true })
+--   vim.api.nvim_create_autocmd({ "TextYankPost " }, {
+--     pattern = "*",
+--     group = yank,
+--     command = ":call system('/mnt/c/windows/system32/clip.exe ', @\")"
+--   })
+-- end
 

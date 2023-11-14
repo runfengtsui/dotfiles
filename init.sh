@@ -2,33 +2,12 @@
 # path of dotfiles
 CONFIG_PATH=$HOME/dotfiles
 
-# NerdFonts
-# wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
-# Install NerdFonts
-if [[ ! -f /usr/share/fonts/FiraCodeNerdFont-Regular.ttf ]]; then
-    sudo cp $CONFIG_PATH/FiraCode/FiraCodeNerdFont-*.ttf /usr/share/fonts/
-    cd /usr/share/fonts
-    sudo mkfontscale
-    sudo mkfontdir
-    sudo fc-cache -fv
-    cd $CONFIG_PATH
-else
-    echo "FiraCodeNerdFont have been installed!"
+# configurations for ranger
+if [[ -d $HOME/.config/ranger ]]; then
+    rm -r $HOME/.config/ranger
 fi
+ln -s $CONFIG_PATH/ranger $HOME/.config/ranger
 
-# ranger with highlight
-if ! command -v ranger >/dev/null 2>&1; then
-    sudo apt -y install ranger highlight
-    if [[ -d $HOME/.config/ranger ]]; then
-        rm -r $HOME/.config/ranger
-    fi
-    ln -s $CONFIG_PATH/ranger $HOME/.config/ranger
-else
-    echo "ranger has been installed!"
-fi
-
-# build prerequisites
-sudo apt -y install ninja-build gettext cmake unzip curl
 # NeoVim
 if [[ ! -d $HOME/Documents/Repositories/neovim ]]; then
     git clone git@github.com:neovim/neovim.git $HOME/Documents/Repositories/neovim
@@ -54,15 +33,7 @@ else
 fi
 # remove vi, vim
 if command -v nvim >/dev/null 2>&1; then
-    sudo apt -y remove vim vim-tiny vim-runtime vim-common
-fi
-# npm to install Neovim's plugins
-if ! command -v npm >/dev/null 2>&1; then
-    sudo apt -y install npm
-    sudo npm install n -g
-    sudo n stable
-else
-    echo "npm and node have been installed!"
+    sudo apt -y remove vim-common
 fi
 
 # xmake
@@ -72,8 +43,6 @@ else
     echo "xmake has been installed!"
 fi
 
-# Fish
-sudo apt -y install fish
 # oh-my-fish
 if ! command -v omf >/dev/null 2>&1; then
     curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
@@ -107,10 +76,4 @@ if ! command -v juliaup >/dev/null 2>&1; then
 else
     echo "juliaup has been installed!"
 fi
-
-# tree
-sudo apt -y install tree
-
-# autoremove
-sudo apt -y autoremove
 

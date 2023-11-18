@@ -13,8 +13,13 @@ return {
       -- If you're using LuaSnip make sure to use
       require("luasnip.loaders.from_vscode").lazy_load()
       -- personal snippets written in lua
-      require("luasnip.loaders.from_lua").load({
-        paths = "~/.config/nvim/snippets",
+      -- Lazy-load snippets, i.e. only load when requird, e.g. for a given filetype
+      require("luasnip.loaders.from_lua").lazy_load({
+        paths = "~/.config/nvim/LuaSnips",
+      })
+      require("luasnip").config.setup({
+        -- enable autosnippets for `snippetType=autosnippet`
+        enable_autosnippets = true
       })
     end,
   },

@@ -1,5 +1,7 @@
 #!/usr/bin/env fish
 if test -e "./Python-3.9.18.tgz"
+    # to import tkinter in Python3.9
+    sudo apt install tk-dev
     tar -xvf Python-3.9.18.tgz
     cd Python-3.9.18
     ./configure --prefix=/opt/Python3/python3.9 --enable-shared --enable-optimizations

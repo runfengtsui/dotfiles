@@ -4,8 +4,11 @@
 sudo apt install cn.loongnix.lbrowser
 # remove LibreOffice and install WPS 2019 for Linux
 sudo apt remove libreoffice-common
-# apt remove libreoffice-core 
+# install WPS for Linux and remove it from the desktop
 sudo apt install cn.wps.wps-office
+if [[ -f $HOME/Desktop/wps-office-prometheus.desktop ]]; then
+    rm $HOME/Desktop/wps-office-prometheus.desktop
+fi
 # install Baidu Netdisk
 sudo apt install com.baidu.baidunetdisk
 # install Tencent Wemeet

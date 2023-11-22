@@ -9,31 +9,17 @@ fi
 ln -s $CONFIG_PATH/ranger $HOME/.config/ranger
 
 # NeoVim
-if [[ ! -d $HOME/Documents/Repositories/neovim ]]; then
-    git clone git@github.com:neovim/neovim.git $HOME/Documents/Repositories/neovim
+# wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage
+if command -v nvim >/dev/null 2>&1; then
+    # configuration for NeoVim
+    ln -s $CONFIG_PATH/nvim $HOME/.config/nvim
 else
-    echo "neovim repository has been cloned!"
-fi
-if ! command -v nvim >/dev/null 2>&1; then
-    cd $HOME/Documents/Repositories/neovim
-    git checkout stable
-    make CMAKE_BUILD_TYPE=RelWithDebInfo CMAKE_INSTALL_PREFIX=/opt/nvim
-    sudo make install
-    if [[ -f /opt/nvim/bin/nvim ]]; then
-        sudo ln -s /opt/nvim/bin/nvim /usr/bin/nvim
-    fi
-    if command -v nvim >/dev/null 2>&1; then
-        # configuration for NeoVim
-        ln -s $CONFIG_PATH/nvim $HOME/.config/nvim
-    else
-        echo "nvim install failed!"
-    fi
-else
-    echo "nvim has been installed!"
+    echo "NeoVim is not installed!"
 fi
 # remove vi, vim
 if command -v nvim >/dev/null 2>&1; then
-    sudo apt -y remove vim-common
+    sudo apt remove vim-common
+    sudo apt autoremove
 fi
 
 # xmake
@@ -62,11 +48,11 @@ if command -v omf >/dev/null 2>&1; then
 fi
 
 # poetry
-if ! command -v poetry >/dev/null 2>&1; then
-    curl -sSL https://install.python-poetry.org | python3 -
-else
-    echo "poetry has been installed!"
-fi
+# if ! command -v poetry >/dev/null 2>&1; then
+#     curl -sSL https://install.python-poetry.org | python3 -
+# else
+#     echo "poetry has been installed!"
+# fi
 # enable tab completion for Fish
 # poetry completions fish > ~/.config/fish/commpletions/poetry.fish
 

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # install some office softwares
+sudo apt install cn.loongnix.lbrowser
 # remove LibreOffice and install WPS 2019 for Linux
 sudo apt remove libreoffice-common
 # apt remove libreoffice-core 
@@ -18,7 +19,7 @@ sudo apt install linux.qq.com
 # apt install com.qq.music
 
 # remove installed games
-sudo apt remove com.deepin.gomoku com.deepin.lianliankan -y
+sudo apt remove com.deepin.gomoku com.deepin.lianliankan
 # install Mines and 
 # apt install org.gnome.gnome-mines com.game.kpat
 

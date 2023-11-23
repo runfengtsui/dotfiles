@@ -14,7 +14,7 @@ vim.keymap.set("n", "<leader>py", function ()
 end, { noremap = true, silent = true })
 
 -- Run Python file
-vim.keymap.set("n", "<C-r>", function ()
+vim.keymap.set("n", "<F5>", function ()
   local command = "TermExec cmd='python3 " .. vim.fn.expand('%') .. "'"
   vim.api.nvim_command(command)
 end, { noremap = true, silent = true })

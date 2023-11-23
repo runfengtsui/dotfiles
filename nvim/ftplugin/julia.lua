@@ -13,3 +13,9 @@ vim.keymap.set("n", "<leader>j", function ()
   juterm:toggle()
 end, { noremap = true, silent = true })
 
+-- Run Julia file
+vim.keymap.set("n", "<F5>", function ()
+  local command = "TermExec cmd='julia " .. vim.fn.expand('%') .. "'"
+  vim.api.nvim_command(command)
+end, { noremap = true, silent = true })
+

@@ -26,5 +26,10 @@ return {
       -- vim-table-mode plugin config
       vim.g.loaded_table_mode = 1
     end,
+  },
+  {
+    "RunfengTsui/wiki.nvim",
+    lazy = true,
+    ft = "markdown",
   }
 }

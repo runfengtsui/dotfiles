@@ -1,11 +1,12 @@
 return {
   {
     "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     build = "cd app && npm install",
     init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
-    ft = "markdown",
+    ft = { "markdown" },
     config = function()
       -- markdown-preview plugin config
       vim.g.mkdp_auto_start = 0
@@ -17,6 +18,8 @@ return {
       -- vim.g.mkdp_open_ip = ""
       -- use a custom port to start server or empty for random
       vim.g.mkdp_port = "8888"
+      -- specify browser to open preview page
+      vim.g.mkdp_browser = "/usr/bin/browser"
     end,
   },
   {

@@ -54,10 +54,6 @@ map("v", ">", ">gv", opt)
 map("v", "J", ":move '>+1<CR>gv-gv", opt)
 map("v", "K", ":move '<-2<CR>gv-gv", opt)
 
--- insert mode, 跳到行首行尾
-map("i", "<C-h>", "<ESC>I", opt)
-map("i", "<C-l>", "<ESC>A", opt)
-
 -- Terminal
 -- Terminal相关
 map("t", "<Esc>", "<C-\\><C-n>", opt)

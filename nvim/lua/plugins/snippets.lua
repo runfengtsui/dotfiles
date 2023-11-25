@@ -8,6 +8,19 @@ return {
     build = "make install_jsregexp",
     -- add `friendly-snippets` as a dependency for LuaSnip
     dependencies = { "rafamadriz/friendly-snippets" },
+    -- https://zhuanlan.zhihu.com/p/644984708
+    keys = {
+      {
+        "<C-h>",
+        "<Plug>luasnip-next-choice",
+        mode = { "i", "s" },
+      },
+      {
+        "<C-p>",
+        "<Plug>luasnip-prev-choice",
+        mode = { "i", "s" },
+      },
+    },
     config = function()
       -- rafamadriz/friendly-snippets
       -- If you're using LuaSnip make sure to use

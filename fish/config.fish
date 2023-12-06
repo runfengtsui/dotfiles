@@ -8,5 +8,7 @@ if status is-interactive
     set -x PATH $HOME/.local/bin $PATH
     # path of Julia and juliaup
     set -x PATH $HOME/.juliaup/bin $PATH
+    # path of rustup and cargo
+    set -x PATH $HOME/.cargo/bin $PATH
     set -x EDITOR nvim
 end

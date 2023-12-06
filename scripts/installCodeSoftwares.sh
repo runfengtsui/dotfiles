@@ -2,6 +2,11 @@
 # path of dotfiles
 CONFIG_PATH=$HOME/dotfiles
 
+# export http_proxy and https_proxy
+mkdir $HOME/.config/functions
+cp $CONFIG_PATH/fish/functions/proxy_on.fish $HOME/.config/fish/functions
+proxy_on
+
 # configurations for ranger
 if [[ -d $HOME/.config/ranger ]]; then
     rm -r $HOME/.config/ranger
@@ -53,6 +58,12 @@ if [[ -d $HOME/.config/fish ]]; then
     rm -r $HOME/.config/fish
 fi
 ln -s CONFIG_PATH/fish $HOME/.config/fish
+
+# install Rust package manager cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# install alacritty
+cargo install alacritty
+sudo ln -s $HOME/.cargo/bin/alacritty /usr/bin/alacritty
 
 # remove vi, vim
 if command -v nvim >/dev/null 2>&1; then

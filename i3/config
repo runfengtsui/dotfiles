@@ -9,8 +9,10 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+# export http and https proxy
+exec_always ~/dotfiles/scripts/clash.sh
 # sudo apt install feh
-exec_always feh --randomize --bg-fill ~/Pictures/Wallpapers/
+exec_always feh --randomize --bg-fill ~/dotfiles/Wallpapers/
 # sudo apt install compton
 exec_always compton -f
 

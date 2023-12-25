@@ -1,8 +1,7 @@
 function clear_latex
-    rm *.aux
-    rm *.fdb_latexmk
-    rm *.fls
-    rm *.log
-    rm *.synctex.gz
-    rm *.xdv
+    for file in *.aux *.fdb_latexmk *.fls *.log *.synctex.gz *.xdv *.out
+        if test -f $file
+            rm $file
+        end
+    end
 end

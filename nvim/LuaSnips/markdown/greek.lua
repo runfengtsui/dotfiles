@@ -7,14 +7,15 @@ return {
   s({ trig=";t", snippetType="autosnippet"},
     { t("\\tau"), }
   ),
+  s({ trig=";p", snippetType="autosnippet"},
+    { t("\\pi"), }
+  ),
+
   s({ trig=";a", snippetType="autosnippet"},
     { t("\\alpha"), }
   ),
-  s({ trig=";b", snippetType="autosnippet"},
-    { t("\\beta"), }
-  ),
-  s({ trig=";g", snippetType="autosnippet"},
-    { t("\\gamma"), }
+  s({ trig=";s", snippetType="autosnippet"},
+    { t("\\psi"), }
   ),
   s({ trig=";d", snippetType="autosnippet"},
     { t("\\delta"), }
@@ -22,8 +23,11 @@ return {
   s({ trig=";D", snippetType="autosnippet"},
     { t("\\Delta"), }
   ),
-  s({ trig=";p", snippetType="autosnippet"},
-    { t("\\pi"), }
+  s({ trig=";f", snippetType="autosnippet"},
+    { t("\\varphi"), }
+  ),
+  s({ trig=";g", snippetType="autosnippet"},
+    { t("\\gamma"), }
   ),
   s({ trig=";h", snippetType="autosnippet"},
     { t("\\eta"), }
@@ -31,10 +35,11 @@ return {
   s({ trig=";j", snippetType="autosnippet"},
     { t("\\xi"), }
   ),
-  s({ trig=";s", snippetType="autosnippet"},
-    { t("\\psi"), }
+  s({ trig=";l", snippetType="autosnippet"},
+    { t("\\lambda"), }
   ),
-  s({ trig=";v", snippetType="autosnippet"},
-    { t("\\varphi"), }
+
+  s({ trig=";b", snippetType="autosnippet"},
+    { t("\\beta"), }
   ),
 }

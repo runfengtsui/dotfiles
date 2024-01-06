@@ -7,7 +7,7 @@ return {
     -- install jsregexp (optional!).
     build = "make install_jsregexp",
     -- add `friendly-snippets` as a dependency for LuaSnip
-    dependencies = { "rafamadriz/friendly-snippets" },
+    -- dependencies = { "rafamadriz/friendly-snippets" },
     -- https://zhuanlan.zhihu.com/p/644984708
     keys = {
       {
@@ -24,7 +24,7 @@ return {
     config = function()
       -- rafamadriz/friendly-snippets
       -- If you're using LuaSnip make sure to use
-      require("luasnip.loaders.from_vscode").lazy_load()
+      -- require("luasnip.loaders.from_vscode").lazy_load()
       -- personal snippets written in lua
       -- Lazy-load snippets, i.e. only load when requird, e.g. for a given filetype
       require("luasnip.loaders.from_lua").lazy_load({

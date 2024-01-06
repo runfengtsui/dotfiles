@@ -2,9 +2,6 @@ local ls = require("luasnip")
 local s = ls.snippet
 local t = ls.text_node
 local i = ls.insert_node
-local fmt = require("luasnip.extras.fmt").fmt
-local fmta = require("luasnip.extras.fmt").fmta
-local rep = require("luasnip.extras").rep
 local sn = ls.snippet_node
 local f = ls.function_node
 local ai = require("luasnip.nodes.absolute_indexer")
@@ -12,42 +9,17 @@ local c = ls.choice_node
 local isn = ls.indent_snippet_node
 local d = ls.dynamic_node
 local ms = ls.multi_snippet
--- local tex = require("util.latex")
+local fmt = require("luasnip.extras.fmt").fmt
+local fmta = require("luasnip.extras.fmt").fmta
 
 return {
   -- math environment
-  s({ trig="mk", name="inline math", dscr="Insert inline Math Environment.", snippetType="autosnippet" },
-    { t("\\("), i(1), t("\\)"), }, {
-      -- condition = tex.in_text,
-      -- show_condition = tex.in_text,
-      -- callbacks = {
-      --   [-1] = { [events.leave] = appended_space_after_insert },
-      -- }
+  s({ trig = "mk", snippetType = "autosnippet" }, {
+    t"$", i(1), t"$",
   }),
-  s({ trig="eq*", dscr="A LaTeX equation environment without label" },
-    fmt(  -- The snippet code actually looks like the equation environment it produces.
-      [[
-        \begin{equation*}
-            <>
-        \end{equation*}
-      ]],
-      -- The insert node is placed in the <> angle brackets
-      { i(1) },
-      -- This is where I specify that angle brackets are used as node positions.
-      { delimiters = "<>" }
-    )
-  ),
-  s({ trig="eq", dscr="A LaTeX equation environment" },
-    fmta( -- fmta use <> angle brackets
-      [[
-        \begin{equation}
-            <>
-            \label{eq:<>}
-        \end{equation}
-      ]],
-      { i(1), i(2) }
-    )
-  ),
+  s({ trig = "mb", snippetType = "autosnippet" }, {
+    t{"$$", ""}, i(1), t{"", "$$"},
+  }),
   s({ trig = "cases" }, {
     t{"\\begin{cases}", ""},
     i(1), t{" \\\\", ""},
@@ -55,16 +27,15 @@ return {
     t{"\\end{cases}"}, i(0)
   }),
 
-
   -- delimiters
   s({ trig = "\\lp", snippetType = "autosnippet" }, {
-    t("\\left\\lparen"), i(1), t("\\right\\rparen ")
+    t("\\left("), i(1), t("\\right)")
   }),
   s({ trig = "\\lv", snippetType = "autosnippet" }, {
-    t("\\left\\lvert"), i(1), t("\\right\\rvert "),
+    t("\\left\\lvert"), i(1), t("\\right\\rvert"),
   }),
   s({ trig = "\\lV", snippetType = "autosnippet" }, {
-    t("\\left\\lVert"), i(1), t("\\right\\rVert "),
+    t("\\left\\lVert"), i(1), t("\\right\\rVert"),
   }),
 
   -- bold symbol
@@ -101,7 +72,7 @@ return {
       ]], { i(1), i(2) })),
     })
   }),
-  s({ trig = "\\pd", dscr = "The partial derivative of function with serival variables.", snippetType = "autosnippet" }, {
+  s({ trig = "\\pd", dscr = "The partial derivative of function with serival variables." }, {
     c(1, {
       sn(1, fmta([[
         \frac{\partial <>}{\partial <>}
@@ -112,7 +83,6 @@ return {
     })
   }),
 
-  -- sum
   s({ trig = "\\sum", snippetType="autosnippet" }, {
     c(1, {
       sn(1, fmta([[

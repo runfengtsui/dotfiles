@@ -4,6 +4,9 @@ local t = ls.text_node
 
 return {
   -- Examples of Greek letter snippets, autotriggered for efficiency
+  s({ trig=";r", snippetType="autosnippet"},
+    { t("\\rho"), }
+  ),
   s({ trig=";t", snippetType="autosnippet"},
     { t("\\tau"), }
   ),
@@ -41,5 +44,11 @@ return {
 
   s({ trig=";b", snippetType="autosnippet"},
     { t("\\beta"), }
+  ),
+  s({ trig=";n", snippetType="autosnippet"},
+    { t("\\nu"), }
+  ),
+  s({ trig=";m", snippetType="autosnippet"},
+    { t("\\mu"), }
   ),
 }

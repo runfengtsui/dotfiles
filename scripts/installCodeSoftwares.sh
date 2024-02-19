@@ -3,15 +3,12 @@
 CONFIG_PATH=$HOME/dotfiles
 
 # export http_proxy and https_proxy
-mkdir $HOME/.config/functions
+mkdir $HOME/.config/fish/functions
 cp $CONFIG_PATH/fish/functions/proxy_on.fish $HOME/.config/fish/functions
 proxy_on
 
-# configurations for ranger
-if [[ -d $HOME/.config/ranger ]]; then
-    rm -r $HOME/.config/ranger
-fi
-ln -s $CONFIG_PATH/ranger $HOME/.config/ranger
+# install yazi file manager
+cargo install --locked yazi-fm
 
 # NeoVim
 # wget https://github.com/neovim/neovim/releases/download/v0.9.4/nvim.appimage

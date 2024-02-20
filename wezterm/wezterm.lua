@@ -17,12 +17,16 @@ config.font = wezterm.font(
 -- 字体透明度
 config.text_background_opacity = 0.6
 
--- 顶部状态栏的样式
-config.use_fancy_tab_bar = false
+-- tab bar
+config.enable_tab_bar = true
 -- 只有一个窗口时隐藏顶部状态栏
 config.hide_tab_bar_if_only_one_tab = true
+-- 顶部状态栏的样式
+config.use_fancy_tab_bar = false
 -- 隐藏新建窗口的加号
 config.show_new_tab_button_in_tab_bar = false
+
+-- window
 -- 窗口装饰
 config.window_decorations = "RESIZE"
 -- 窗口透明度
@@ -36,7 +40,7 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
--- 启用滚动条
+-- scroll bar
 config.enable_scroll_bar = true
 
 -- 取消所有默认快捷键
@@ -90,6 +94,12 @@ config.keys = {
     action = act {
       ActivatePaneDirection = "Right"
     }
+  },
+  -- Toggles the zoom state of the current pane.
+  {
+    key = "f",
+    mods = "LEADER",
+    action = act.TogglePaneZoomState
   },
 }
 

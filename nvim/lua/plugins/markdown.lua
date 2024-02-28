@@ -11,6 +11,8 @@ return {
       vim.g.mkdp_auto_start = 0
       -- auto close current preview window when change from markdown buffer to another buffer
       vim.g.mkdp_auto_close = 1
+      -- the preview server is available to others in you network
+      vim.g.mkdp_open_to_the_world = 1
       -- echo preview page url in command when open preview page
       vim.g.mkdp_echo_preview_url = 1
       -- use custom IP to open preview page

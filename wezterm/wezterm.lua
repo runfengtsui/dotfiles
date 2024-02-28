@@ -4,6 +4,13 @@ local config = {}
 
 -- Spawn a fish shell in login mode
 config.default_prog = { '/usr/local/bin/fish', '-l' }
+-- Launcher Munu
+config.launch_menu = {
+  {
+    label = "ssh tsui-hecs",
+    args = { "ssh", "tsui@1.94.52.71"},
+  },
+}
 
 config.color_scheme = "Catppuccin Mocha"
 
@@ -97,7 +104,7 @@ config.keys = {
   },
   -- Toggles the zoom state of the current pane.
   {
-    key = "f",
+    key = "z",
     mods = "LEADER",
     action = act.TogglePaneZoomState
   },
@@ -107,8 +114,19 @@ config.keys = {
     mods = "CTRL",
     action = act.PasteFrom 'Clipboard'
   },
+  -- Activate the Launcher Menu in the current tab
+  {
+    key = "L",
+    mods = "CTRL",
+    action = act.ShowLauncher
+  },
+  -- Activate the previously active tab. If there is none, it will do nothing.
+  {
+    key = "o",
+    mods = "LEADER",
+    action = act.ActivateLastTab
+  },
 }
-
 
 return config
 

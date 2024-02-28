@@ -7,6 +7,8 @@ mkdir $HOME/.config/fish/functions
 cp $CONFIG_PATH/fish/functions/proxy_on.fish $HOME/.config/fish/functions
 proxy_on
 
+# install Rust package manager cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install yazi file manager
 cargo install --locked yazi-fm
 
@@ -47,9 +49,6 @@ if [[ -d $HOME/.config/fish ]]; then
     rm -r $HOME/.config/fish
 fi
 ln -s CONFIG_PATH/fish $HOME/.config/fish
-
-# install Rust package manager cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # remove vi, vim
 if command -v nvim >/dev/null 2>&1; then

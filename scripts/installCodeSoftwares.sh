@@ -42,14 +42,6 @@ else
     echo "juliaup has been installed!"
 fi
 
-# oh-my-fish
-if [[ ! -d $HOME/.local/share/omf ]]; then
-    curl https://raw.githubusercontent.com/oh-my-fish/oh-my-fish/master/bin/install > install
-    fish install --path=~/.local/share/omf --config=~/.config/omf
-    rm install
-else
-    echo "omf has been installed!"
-fi
 # config for fish
 if [[ -d $HOME/.config/fish ]]; then
     rm -r $HOME/.config/fish
@@ -58,9 +50,6 @@ ln -s CONFIG_PATH/fish $HOME/.config/fish
 
 # install Rust package manager cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# install alacritty
-cargo install alacritty
-sudo ln -s $HOME/.cargo/bin/alacritty /usr/bin/alacritty
 
 # remove vi, vim
 if command -v nvim >/dev/null 2>&1; then

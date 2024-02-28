@@ -101,6 +101,12 @@ config.keys = {
     mods = "LEADER",
     action = act.TogglePaneZoomState
   },
+  -- paste from the clipboard
+  {
+    key = "V",
+    mods = "CTRL",
+    action = act.PasteFrom 'Clipboard'
+  },
 }
 
 

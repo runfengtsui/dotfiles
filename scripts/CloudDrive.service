@@ -1,0 +1,10 @@
+[Unit]
+Description=CloudDrive Service
+After=network.target
+
+[Service]
+ExecStart=/opt/clouddrive-2-linux-x86_64-0.6.7/clouddrive
+WorkingDirectory=/opt/clouddrive-2-linux-x86_64-0.6.7
+
+[Install]
+WantedBy=default.target

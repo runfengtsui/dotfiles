@@ -18,6 +18,9 @@ play = [
 pdfview = [
     { exec = 'zathura "$@"', orphan = true, desc = "Open PDF file", for = "linux" },
 ]
+wpsopen = [
+    { exec = 'wps "$@"', orphan = true, desc = "WPS for word, xls, ppt, and pdf.", for = "linux" },
+]
 
 [open]
 rules = [
@@ -25,5 +28,10 @@ rules = [
     { mime = "image/*", use = [ "open", "reveal" ]},
     { mime = "video/*", use = [ "play", "reveal" ]},
     
-    { mime = "application/pdf", use = "pdfview" },
+    { mime = "application/pdf", use = [ "pdfview", "wpsopen"] },
+    { name = "*.doc", use = "wpsopen" },
+    { name = "*.docx", use = "wpsopen" },
+    { name = "*.xls", use = "wpsopen" },
+    { name = "*.ppt", use = "wpsopen" },
+    { name = "*.pptx", use = "wpsopen" },
 ]

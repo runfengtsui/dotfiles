@@ -1,32 +1,29 @@
 # DOTFILES
 
-本仓库存储个人的配置文件. 
+本仓库主要是 `dot config` 文件夹中各应用的配置文件, 附带一些软件的安装说明.
 
-## 配置文件
+## 字体安装
 
-因为配置文件多存储在 `~/.config` 文件夹下, 所以需要将本仓库中的配置文件软链接到 `~/.config` 文件夹下. 如 `fish`, `i3`, `nvim`, `pypoetry`, `wezterm`, `yazi` 等:
-
-```bash
-ln -s $PWD/fish $HOME/.config/fish
-ln -s $PWD/i3 $HOME/.config/i3
-ln -s $PWD/nvim $HOME/.config/nvim
-ln -s $PWD/pypoetry $HOME/.config/pypoetry
-ln -s $PWD/wezterm $HOME/.config/wezterm
-ln -s $PWD/yazi $HOME/.config/yazi
-```
-
-也有的配置文件存储在 `HOME` 目录下, 如
+下载 [Nerd Font](https://www.nerdfonts.com/) 并安装, 如
 
 ```bash
-ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.ziphttps://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
+sudo mkdir -p /usr/share/fonts/FiraCode
+sudo unzip FiraCode.zip -d /usr/share/fonts/FiraCode
+cd /usr/share/fonts/FiraCode
+sudo mkfontscale
+sudo mkfontdir
+fc-cache -fv
 ```
 
-## 一些软件的安装
-### Rust and yazi
+## 一些编程软件的安装
+### Rust, Alacritty and yazi
 
 ```bash
 # install Rust package manager cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# install alacrity terminal
+cargo install alacritty
 # install yazi file manager
 cargo install --locked yazi-fm
 ```
@@ -49,17 +46,56 @@ curl -sSL https://install.python-poetry.org | python3 -
 curl -fsSL https://install.julialang.org | sh
 ```
 
-### Python3.9.18 安装脚本
-
-首先需要下载 Python3.9.18 的安装文件
+### Dynamic Window Manager
 
 ```bash
-wget https://www.python.org/ftp/python/3.9.18/Python-3.9.18.tgz
+# dependencies for dwm
+sudo apt install libxft-dev libxinerama-dev
+
+# dependencies for feh
+sudo apt install libimlib2-dev libcurl4-gnutls-dev libxt-dev
+wget https://feh.finalrewind.org/feh-3.10.2.tar.bz2
+tar -jxf feh-3.10.2.tar.bz2
+cd feh-3.10.2
+make && make install
+
+# install rofi
+sudo apt install rofi
 ```
 
-将脚本 `installPython39.fish` 和下载好的文件 `Python-3.9.18.tgz` 放在同一目录下, 然后运行安装脚本即可实现安装:
+## 一些办公软件的安装
 
-```fish
-fish ./installPython39.fish
+```bash
+# qq
+sudo apt install linux.qq.com
+# wemeet
+sudo apt install com.qq.wemeet
+# loongnix browser
+sudo apt install cn.loongnix.lbrowser
+# WPS Office
+sudo apt remove libreoffice-common
+sudo apt autoremove
+sudo apt install cn.wps.wps-office
+# Baidu NetDisk
+sudo apt install com.baidu.baidunetdisk
 ```
+
+## 配置文件
+
+将本仓库中的配置文件软链接到 `~/.config` 文件夹下. 如 `alacritty`, `fish`, `nvim`, `pypoetry`, `yazi` 等:
+
+```bash
+ln -s $PWD/alacritty $HOME/.config/alacritty
+ln -s $PWD/fish $HOME/.config/fish
+ln -s $PWD/nvim $HOME/.config/nvim
+ln -s $PWD/pypoetry $HOME/.config/pypoetry
+ln -s $PWD/yazi $HOME/.config/yazi
+```
+
+也有的配置文件存储在 `HOME` 目录下, 如
+
+```bash
+ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
+```
+
 

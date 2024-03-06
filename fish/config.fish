@@ -10,5 +10,8 @@ if status is-interactive
     set -x PATH $HOME/.juliaup/bin $PATH
     # path of rustup and cargo
     set -x PATH $HOME/.cargo/bin $PATH
+    # path of nodejs and npm
+    set NODEVERSION v20.11.1
+    set -x PATH /usr/local/lib/nodejs/node-$NODEVERSION-linux-x64/bin $PATH
     set -x EDITOR nvim
 end

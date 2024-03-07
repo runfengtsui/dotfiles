@@ -11,22 +11,26 @@ wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.z
 sudo mkdir -p /usr/share/fonts/FiraCode
 sudo unzip FiraCode.zip -d /usr/share/fonts/FiraCode
 cd /usr/share/fonts/FiraCode
-sudo mkfontscale
-sudo mkfontdir
 fc-cache -fv
 ```
 
 ## 一些编程软件的安装
-### Rust, Alacritty and yazi
+### Rust and yazi
 
 ```bash
 # install Rust package manager cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# install alacrity terminal
-cargo install alacritty
 # install yazi file manager
 cargo install --locked yazi-fm
 ```
+
+### Fish Shell
+
+参考 [Building from source](https://github.com/fish-shell/fish-shell/?tab=readme-ov-file#building-from-source).
+
+### Alacritty
+
+参考 [Build Instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).
 
 ### xmake
 
@@ -66,6 +70,8 @@ sudo apt install rofi
 ## 一些办公软件的安装
 
 ```bash
+# remove games
+sudo apt remove com.deepin.lianliankan com.deepin.gomoku
 # qq
 sudo apt install linux.qq.com
 # wemeet

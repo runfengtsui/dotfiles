@@ -2,4 +2,4 @@ import widgets
 
 class Layout:
     left = [widgets.Workspace]
-    right = [widgets.Date]
+    right = [widgets.Date, widgets.Time]

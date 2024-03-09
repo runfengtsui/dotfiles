@@ -1,6 +1,6 @@
 class Config:
-    lemonbar = "lemonbar -d -p -o 2",
-    height = 40,
+    lemonbar = "lemonbar -d -p",
+    height = 20,
     outer_gap = 10,
-    font = "FiraCode Nerd Font",
-    font_size = 16,
+    font = "FiraCode",
+    font_size = 14,

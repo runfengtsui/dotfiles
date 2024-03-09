@@ -16,7 +16,8 @@ exec_always feh --randomize --bg-fill ~/dotfiles/Wallpapers/
 # sudo apt install compton
 exec_always compton -f
 # exec --no-startup-id bash ~/dotfiles/polybar/launch.sh
-exec_always ~/dotfiles/polybar/launch.sh
+# exec_always ~/dotfiles/polybar/launch.sh
+exec_always $HOME/dotfiles/scripts/lemonbar.sh
 
 set $mod Mod4
 
@@ -45,7 +46,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec wezterm
+bindsym $mod+Return exec alacritty
 # bindsym $mod+Return exec i3-sensible-terminal
 # bindsym $mod+Return workspace $ws1; exec --no-startup-id alacritty
 

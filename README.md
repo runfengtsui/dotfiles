@@ -97,6 +97,21 @@ sudo apt install com.visualstudio.code
 sudo apt install org.virtualbox.virtualbox
 ```
 
+### LaTeX 环境配置
+
+参考 [Deepin Linux 安装和搭建LaTex环境](https://zhuanlan.zhihu.com/p/40053417).
+
+```bash
+# 这个是最基本的, 编译器是 pdflatex, 没有 xelatex
+sudo apt install texlive
+# 安装 xelatex
+sudo apt isntall texlive-xetex
+# 中文包, 这样基本就能使用了
+sudo apt install texlive-lang-chinese
+# Neovim 需要
+sudo apt install latexmk
+```
+
 ## 配置文件
 
 将本仓库中的配置文件软链接到 `~/.config` 文件夹下. 如 `alacritty`, `fish`, `nvim`, `pypoetry`, `yazi` 等:

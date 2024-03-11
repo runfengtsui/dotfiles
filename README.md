@@ -50,6 +50,10 @@ curl -sSL https://install.python-poetry.org | python3 -
 curl -fsSL https://install.julialang.org | sh
 ```
 
+### Nodejs
+
+使用 [脚本](./scripts/downloadnodejs.fish) 进行安装.
+
 ### Dynamic Window Manager
 
 ```bash
@@ -67,13 +71,16 @@ make && make install
 sudo apt install rofi
 ```
 
-## 一些办公软件的安装
+## Initialize Deepin
 
 ```bash
+sudo apt install tree neofetch
 # remove games
 sudo apt remove com.deepin.lianliankan com.deepin.gomoku
 # qq
 sudo apt install linux.qq.com
+# QQ Music
+sudo apt install com.qq.music
 # wemeet
 sudo apt install com.qq.wemeet
 # loongnix browser
@@ -84,6 +91,10 @@ sudo apt autoremove
 sudo apt install cn.wps.wps-office
 # Baidu NetDisk
 sudo apt install com.baidu.baidunetdisk
+# Visual Studio Code
+sudo apt install com.visualstudio.code
+# Oracle VM VirtualBox
+sudo apt install org.virtualbox.virtualbox
 ```
 
 ## 配置文件

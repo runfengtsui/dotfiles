@@ -1,21 +1,18 @@
 #!/usr/bin/env python3
 import os
-from config import Config
 from layout import Layout
-import subprocess
 
-# x = Config.outer_gap
-# for widget in Layout.left:
-#     I = 0
-#     width = (2 * widget.inner_gap + widget.length) * (Config.font_size * 1.5)
+def drawbar(x, layout):
+    for _, widget in enumerate(layout):
+        position = f"{str(widget.width)}x27+{str(x)}+0"
+        cmd = f"{widget.command} | lemonbar -f '{widget.font}' -F '{widget.foreground}' -B '{widget.background}' -g {position} -p &"
+        x = x + widget.width + widget.gap
+        print(f"{x} {cmd}")
+        os.popen(cmd)
 
-# for widget in Layout.right:
-#     I = 0
-#     width = (2 * widget.inner_gap + widget.length) * (Config.font_size * 1.5)
-#     x = x - width
+os.popen("killall lemonbar")
 
-widget = Layout.left[0]
-while True:
-    output = subprocess.run([widget.command])
-    print(output)
-    
+drawbar(0, Layout.left)
+drawbar(587, Layout.center)
+drawbar(1046, Layout.right)
+

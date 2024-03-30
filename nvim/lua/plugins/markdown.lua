@@ -20,7 +20,7 @@ return {
       -- use a custom port to start server or empty for random
       vim.g.mkdp_port = "8888"
       -- specify browser to open preview page
-      vim.g.mkdp_browser = "/usr/bin/browser"
+      -- vim.g.mkdp_browser = ""
     end,
   },
   {

@@ -9,4 +9,7 @@ return {
     i(1, "Codes"),
     t({"", "```", ""}),
   }),
+  s({ trig = "link", dscr = "The url link." }, {
+    t("["), i(1), t("]("), i(2), t(")"),
+  }),
 }

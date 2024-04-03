@@ -58,7 +58,7 @@ return {
 
   -- delimiters
   s({ trig = "\\lp", snippetType = "autosnippet" }, {
-    t("\\left\\lparen"), i(1), t("\\right\\rparen ")
+    t("\\left("), i(1), t("\\right)")
   }),
   s({ trig = "\\lv", snippetType = "autosnippet" }, {
     t("\\left\\lvert"), i(1), t("\\right\\rvert "),

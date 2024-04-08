@@ -4,11 +4,17 @@ local t = ls.text_node
 
 return {
   -- Examples of Greek letter snippets, autotriggered for efficiency
+  s({ trig=";e", snippetType="autosnippet"},
+    { t("\\varepsilon"), }
+  ),
   s({ trig=";r", snippetType="autosnippet"},
     { t("\\rho"), }
   ),
   s({ trig=";t", snippetType="autosnippet"},
     { t("\\tau"), }
+  ),
+  s({ trig=";O", snippetType="autosnippet"},
+    { t("\\Omega"), }
   ),
   s({ trig=";p", snippetType="autosnippet"},
     { t("\\pi"), }

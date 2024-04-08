@@ -24,37 +24,6 @@ return {
       --   [-1] = { [events.leave] = appended_space_after_insert },
       -- }
   }),
-  s({ trig="eq*", dscr="A LaTeX equation environment without label" },
-    fmt(  -- The snippet code actually looks like the equation environment it produces.
-      [[
-        \begin{equation*}
-            <>
-        \end{equation*}
-      ]],
-      -- The insert node is placed in the <> angle brackets
-      { i(1) },
-      -- This is where I specify that angle brackets are used as node positions.
-      { delimiters = "<>" }
-    )
-  ),
-  s({ trig="eq", dscr="A LaTeX equation environment" },
-    fmta( -- fmta use <> angle brackets
-      [[
-        \begin{equation}
-            <>
-            \label{eq:<>}
-        \end{equation}
-      ]],
-      { i(1), i(2) }
-    )
-  ),
-  s({ trig = "cases" }, {
-    t{"\\begin{cases}", ""},
-    i(1), t{" \\\\", ""},
-    i(2), t{"", ""},
-    t{"\\end{cases}"}, i(0)
-  }),
-
 
   -- delimiters
   s({ trig = "\\lp", snippetType = "autosnippet" }, {
@@ -64,7 +33,10 @@ return {
     t("\\left\\lvert"), i(1), t("\\right\\rvert "),
   }),
   s({ trig = "\\lV", snippetType = "autosnippet" }, {
-    t("\\left\\lVert"), i(1), t("\\right\\rVert "),
+    t("\\left\\lVert"), i(1), t("\\right\\rVert"),
+  }),
+  s({ trig = "\\lb", snippetType = "autosnippet" }, {
+    t("\\left\\lbrace"), i(1), t("\\right\\rbrace"),
   }),
 
   -- bold symbol
@@ -91,7 +63,7 @@ return {
   }),
 
   -- derivative and partial derivative
-  s({ trig = "\\de", dscr = "The derivative of function.", snippetType = "autosnippet" }, {
+  s({ trig = "\\dd", dscr = "The derivative of function.", snippetType = "autosnippet" }, {
     c(1, {
       sn(1, fmta([[
         \frac{\mathrm{d} <>}{\mathrm{d} <>}

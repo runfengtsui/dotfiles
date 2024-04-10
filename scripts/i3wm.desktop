@@ -1,0 +1,7 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=i3wm
+Comment=improving tiling wm
+Exec=/usr/local/bin/i3
+Icon=i3
+Type=XSession

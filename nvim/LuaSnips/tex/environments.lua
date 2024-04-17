@@ -49,4 +49,20 @@ return {
   s({ trig = "theo", dscr = "theorem environment" }, {
     t({"\\begin{theorem}", ""}), i(1), t({"", "\\end{theorem}", ""})
   }),
+  s({ trig="figure", dscr="insert figure", },
+    fmta([[
+      \begin{figure}[<>]
+        \centering
+        \includegraphics[<>]{<>}
+        \caption{<>}
+        \label{fig:<>}
+      \end{figure}
+    ]], {
+      i(5, "htbp!");
+      i(2, "width = 0.8\\textwidth");
+      i(1, "path of figure");
+      i(3, "Figure Caption");
+      i(4, "label");
+    })
+  ),
 }

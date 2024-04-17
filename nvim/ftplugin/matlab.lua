@@ -7,7 +7,7 @@ vim.opt_local.softtabstop = 4
 vim.keymap.set("n", "<leader>b", function ()
   local Terminal = require('toggleterm.terminal').Terminal
   local baltamterm = Terminal:new({
-    cmd = "/opt/Baltamatica/bin/baltamaticaC.sh",
+    cmd = "baltamaticaC.sh",
     direction = 'horizontal',
   })
   baltamterm:toggle()

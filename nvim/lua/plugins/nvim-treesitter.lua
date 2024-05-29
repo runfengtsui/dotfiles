@@ -1,6 +1,6 @@
 return {
   "nvim-treesitter/nvim-treesitter",
-  enent = { "BufReadPost", "BufNewFile" },
+  event = { "BufReadPost", "BufNewFile" },
   lazy = false,
   priority = 1000,
   build = ":TSUpdate",

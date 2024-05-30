@@ -12,7 +12,7 @@ vim.keymap.set("n", "<leader>b", function ()
       -- https://cloud.tencent.com/developer/ask/sof/107177575
       if vim.loop.os_uname().sysname == "Windows_NT" then
         cmd = "baltamaticaCLI.exe"
-      elseif vim.loop.os_uname.sysname == "Linux" then
+      elseif vim.loop.os_uname().sysname == "Linux" then
         cmd = "baltamaticaC.sh"
       end
       return cmd

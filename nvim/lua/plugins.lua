@@ -19,7 +19,6 @@ require("lazy").setup({
   require("plugins.markdown"),
   require("plugins.toggleterm"),
   require("plugins.nvim-treesitter"),
-  require("plugins.comment"),
   require("plugins.mason"),
   require("plugins.autocomplete"),
   require("plugins.snippets"),

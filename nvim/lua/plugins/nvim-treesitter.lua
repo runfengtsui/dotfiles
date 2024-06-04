@@ -16,7 +16,7 @@ return {
       -- Install language parser
       -- :TSInstallInfo command to show supported languages
       ensure_installed = {
-        "markdown", "markdown_inline", "latex",
+        "markdown", "markdown_inline",
         "julia", "matlab", "python",
         "cpp", "c",
         "lua", "vim",

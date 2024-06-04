@@ -2,10 +2,7 @@ return {
   "williamboman/mason-lspconfig.nvim",
   lazy = false,
   dependencies = {
-    {
-      "williamboman/mason.nvim",
-      build = ":MasonUpdate",
-    },
+    { "williamboman/mason.nvim" },
     { "neovim/nvim-lspconfig" },
   },
   config = function()

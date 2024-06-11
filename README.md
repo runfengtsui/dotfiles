@@ -15,6 +15,24 @@ fc-cache -fv
 ```
 
 ## 一些编程软件的安装
+### Fish Shell
+
+参考 [Building from source](https://github.com/fish-shell/fish-shell/?tab=readme-ov-file#building-from-source).
+
+### Neovim
+
+1. 系统剪切板支持
+
+```bash
+apt install xclip
+```
+
+2. 安装 `pyright` 需要首先使用 [脚本](./scripts/downloadnodejs.fish) 安装 Nodejs.
+
+### Alacritty
+
+参考 [Build Instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).
+
 ### Rust and yazi
 
 ```bash
@@ -23,14 +41,6 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install yazi file manager
 cargo install --locked yazi-fm
 ```
-
-### Fish Shell
-
-参考 [Building from source](https://github.com/fish-shell/fish-shell/?tab=readme-ov-file#building-from-source).
-
-### Alacritty
-
-参考 [Build Instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).
 
 ### xmake
 
@@ -49,10 +59,6 @@ curl -sSL https://install.python-poetry.org | python3 -
 ```bash
 curl -fsSL https://install.julialang.org | sh
 ```
-
-### Nodejs
-
-使用 [脚本](./scripts/downloadnodejs.fish) 进行安装.
 
 ### Dynamic Window Manager
 
@@ -103,7 +109,7 @@ sudo apt install org.virtualbox.virtualbox
 
 ```bash
 # 这个是最基本的, 编译器是 pdflatex, 没有 xelatex
-sudo apt install texlive
+sudo apt install texlive-base
 # 安装 xelatex
 sudo apt isntall texlive-xetex
 # 中文包, 这样基本就能使用了
@@ -129,5 +135,4 @@ ln -s $PWD/yazi $HOME/.config/yazi
 ```bash
 ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
 ```
-
 

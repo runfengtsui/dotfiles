@@ -8,16 +8,34 @@
 
 ```bash
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
-sudo mkdir -p /usr/share/fonts/FiraCode
 sudo unzip FiraCode.zip -d /usr/share/fonts/FiraCode
 cd /usr/share/fonts/FiraCode
 fc-cache -fv
 ```
 
 ## 一些编程软件的安装
+### Rust and yazi
+
+```bash
+# install Rust package manager cargo
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# install yazi file manager
+cargo install --locked yazi-fm yazi-cli
+```
+
 ### Fish Shell
 
 参考 [Building from source](https://github.com/fish-shell/fish-shell/?tab=readme-ov-file#building-from-source).
+
+### Alacritty
+
+参考 [Build Instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).
+
+对于 Deepin V23 RC 在安装以下依赖后执行 `cargo build --release` 即可.
+
+```bash
+apt install pkg-config libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
+```
 
 ### Neovim
 
@@ -28,19 +46,6 @@ apt install xclip
 ```
 
 2. 安装 `pyright` 需要首先使用 [脚本](./scripts/downloadnodejs.fish) 安装 Nodejs.
-
-### Alacritty
-
-参考 [Build Instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).
-
-### Rust and yazi
-
-```bash
-# install Rust package manager cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# install yazi file manager
-cargo install --locked yazi-fm
-```
 
 ### xmake
 
@@ -134,5 +139,14 @@ ln -s $PWD/yazi $HOME/.config/yazi
 
 ```bash
 ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
+```
+
+## 浏览器插件 Vimium 配置
+
+自定义搜索引擎
+
+```text
+baidu: https://www.baidu.com/s?wd=%s Baidu
+dict: http://dict.cn/%s Dictionary
 ```
 

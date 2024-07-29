@@ -119,6 +119,8 @@ sudo apt install texlive-base
 sudo apt isntall texlive-xetex
 # 中文包, 这样基本就能使用了
 sudo apt install texlive-lang-chinese
+# algorithm 包需要
+sudo apt install texlive-science
 # Neovim 需要
 sudo apt install latexmk
 ```

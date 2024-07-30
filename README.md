@@ -125,6 +125,10 @@ sudo apt install texlive-science
 sudo apt install latexmk
 ```
 
+### Neovim vimtex 插件配套 Zathura PDF 阅读器
+
+使用源码安装的过程参考 [Zathura 安装](https://github.com/runfengtsui/Notes/blob/main/Applications/zathura.md).
+
 ## 配置文件
 
 将本仓库中的配置文件软链接到 `~/.config` 文件夹下. 如 `alacritty`, `fish`, `nvim`, `pypoetry`, `yazi` 等:
@@ -132,7 +136,6 @@ sudo apt install latexmk
 ```bash
 ln -s $PWD/alacritty $HOME/.config/alacritty
 ln -s $PWD/fish $HOME/.config/fish
-ln -s $PWD/nvim $HOME/.config/nvim
 ln -s $PWD/pypoetry $HOME/.config/pypoetry
 ln -s $PWD/yazi $HOME/.config/yazi
 ```
@@ -150,5 +153,6 @@ ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
 ```text
 baidu: https://www.baidu.com/s?wd=%s Baidu
 dict: http://dict.cn/%s Dictionary
+github: https://github.com/search?q=%s Github
 ```
 

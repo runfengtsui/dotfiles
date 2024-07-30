@@ -14,6 +14,21 @@ fc-cache -fv
 ```
 
 ## 一些编程软件的安装
+### Github
+
+很多时候 `ssh` 协议传输比较慢, 无法开代理, 不如使用 `https` 开代理快. 但是使用 `https` 通信往往需要输入邮箱和密码, 显得繁琐. 比较好的方式是使用 [GitHub’s official command line tool](https://github.com/cli/cli) 验证账户.
+
+根据 [install linux](https://github.com/cli/cli/blob/trunk/docs/install_linux.md#debian-ubuntu-linux-raspberry-pi-os-apt), 添加 `cli` 源安装 `gh` 过程如下:
+
+```bash
+sudo mkdir -p -m 755 /etc/apt/keyrings
+wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg
+sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list
+sudo apt update
+sudo apt install gh -y
+```
+
 ### Rust and yazi
 
 ```bash

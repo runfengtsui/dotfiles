@@ -29,13 +29,17 @@ sudo apt update
 sudo apt install gh -y
 ```
 
-### Rust and yazi
+### Rust and Cargo
 
 ```bash
 # install Rust package manager cargo
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install yazi file manager
 cargo install --locked yazi-fm yazi-cli
+# install fnm to manager nodejs and npm
+cargo install fnm
+# then use fnm to install nodejs and npm
+fnm install --lst
 ```
 
 ### Fish Shell
@@ -54,13 +58,11 @@ apt install pkg-config libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
 
 ### Neovim
 
-1. 系统剪切板支持
+系统剪切板支持
 
 ```bash
 apt install xclip
 ```
-
-2. 安装 `pyright` 需要首先使用 [脚本](./scripts/downloadnodejs.fish) 安装 Nodejs.
 
 ### xmake
 

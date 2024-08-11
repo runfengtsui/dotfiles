@@ -21,3 +21,9 @@ italic = { family = "FiraCode Nerd Font", style = "Italic" }
 bold_italic = { family = "FiraCode Nerd Font", style = "Bold Italic" }
 size = 12
 
+[keyboard]
+bindings = [
+    # https://stackoverflow.com/questions/16359878/how-to-map-shift-enter/42461580#42461580
+    { key = "Return", mods = "Shift", chars = "\u001B[13;2u" }
+]
+

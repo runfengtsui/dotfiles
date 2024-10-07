@@ -1,5 +1,5 @@
-[shell]
-program = "/usr/local/bin/fish" 
+[terminal.shell]
+program = "/usr/bin/fish"
 args = ["-l"]
 
 [window]

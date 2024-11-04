@@ -169,7 +169,12 @@ ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
 
 ```text
 baidu: https://www.baidu.com/s?wd=%s Baidu
-dict: http://dict.cn/%s Dictionary
+bing: https://bing.com/search?q=%s Bing
+zhihu: https://www.zhihu.com/search?q=%s ZhiHu
+gitee: https://so.gitee.com/?q=%s Gitee
 github: https://github.com/search?q=%s Github
+bili: https://search.bilibili.com/?keyword=%s BiliBili
+you: https://www.youtube.com/results?search_query=%s YouTube
+dict: http://dict.cn/%s Dictionary
 ```
 

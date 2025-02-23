@@ -1,0 +1,102 @@
+{
+    // hidden 
+    "window.menuBarVisibility": "toggle",
+    "workbench.activityBar.location": "hidden",
+    // Editor
+    "editor.fontSize": 18,
+    // disable minimap
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "relative",
+    // Files
+    "files.encoding": "utf8",
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.venv": true,
+        "**/__pycache__": true,
+    },
+    // Terminal
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    // Vim
+    // use system clipboard
+    "vim.useSystemClipboard": true,
+    // "vim.useCtrlKeys": true,
+    "vim.leader": ";",
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [ "j", "k" ],
+            "after": [ "<Esc>" ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        // close
+        {
+            "before": [ "<leader>", "q" ],
+            "commands": [ ":q" ]
+        },
+        // focus terminal
+        {
+            "before": [ "<leader>", "t" ],
+            "commands": [ "workbench.action.terminal.focus" ]
+        },
+        // split window
+        {
+            "before": [ "<leader>", "v" ],
+            "commands": [ ":vsplit" ]
+        },
+        {
+            "before": [ "<leader>", "s" ],
+            "commands": [ ":split" ]
+        },
+        // panes
+        {
+            "before": [ "<leader>", "h" ],
+            "commands": [ "workbench.action.focusLeftGroup" ]
+        },
+        {
+            "before": [ "<leader>", "j" ],
+            "commands": [ "workbench.action.focusBelowGroup" ]
+        },
+        {
+            "before": [ "<leader>", "k" ],
+            "commands": [ "workbench.action.focusAboveGroup" ]
+        },
+        {
+            "before": [ "<leader>", "l" ],
+            "commands": [ "workbench.action.focusRightGroup" ]
+        },
+        // tab next/prev
+        {
+            "before": [ "t", "p" ],
+            "commands": [ ":tabprev" ]
+        },
+        {
+            "before": [ "t", "n" ],
+            "commands": [ ":tabnext" ]
+        },
+        // debug
+        {
+            "before": [ "<leader>", "t", "b" ],
+            "commands": [ "editor.debug.action.toggleBreakpoint" ]
+        },
+        {
+            "before": [ "<leader>", "e" ],
+            "commands": [ "workbench.view.explorer" ]
+        },
+        {
+            "before": [ "<leader>", "f" ],
+            "commands": [ "workbench.files.focus"]
+        }
+    ],
+    "vim.normalModeKeyBindings": [
+    ],
+    // Julia
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.symbolCacheDownload": true,
+    "julia.enableTelemetry": false,
+    "git.autofetch": true,
+}

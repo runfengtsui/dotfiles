@@ -1,0 +1,22 @@
+{
+    "theta": {
+        "prefix": "@q",
+        "body": [ "\\theta" ],
+        "description": "display greek theta",
+    },
+    "pi": {
+        "prefix": "@p",
+        "body": [ "\\pi" ],
+        "description": "display greek pi",
+    },
+    "phi": {
+        "prefix": "@f",
+        "body": [ "\\phi" ],
+        "description": "display greek phi",
+    },
+    "varphi": {
+        "prefix": "@vf",
+        "body": [ "\\varphi" ],
+        "description": "display greek varphi",
+    },
+}

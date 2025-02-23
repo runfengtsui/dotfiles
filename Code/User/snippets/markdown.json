@@ -1,0 +1,28 @@
+{
+    "information": {
+        "prefix": "information",
+        "body": [
+            "---",
+            "Title: ${TM_FILENAME/(.*)\\.md/$1/i}",
+            "Author: 邱彼郑楠 (runfengtsui@yeah.net)",
+            "Date: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+            "Modified: ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}",
+            "---"
+        ],
+        "description": "Create descriptive information about the file."
+    },
+    "inline math": {
+        "prefix": "mk",
+        "body": [ "$$1$ $0" ],
+        "description": "Insert inline math formula"
+    },
+    "block math": {
+        "prefix": "mb",
+        "body": [
+            "$$",
+            "$1",
+            "$$"
+        ],
+        "description": "Insert display math block formula"
+    }
+}

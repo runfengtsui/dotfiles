@@ -8,7 +8,6 @@ if status is-interactive
     # path of Julia and juliaup
     set -x PATH $HOME/.juliaup/bin $PATH
     # path of nodejs and npm
-    set NODEVERSION v22.9.0
-    set -x PATH $HOME/.local/share/fnm/node-versions/$NODEVERSION/installation/bin $PATH
+    set -x PATH $HOME/.local/opt/nodejs/aliases/default/bin $PATH
     set -x EDITOR nvim
 end

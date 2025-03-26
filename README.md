@@ -7,8 +7,8 @@
 下载 [Nerd Font](https://www.nerdfonts.com/) 并安装, 如
 
 ```bash
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.zip
-sudo unzip FiraCode.zip -d /usr/share/fonts/FiraCode
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraCode.zip
+sudo unzip FiraCode.zip -d ~/.local/share/fonts/FiraCode
 cd /usr/share/fonts/FiraCode
 fc-cache -fv
 ```
@@ -36,10 +36,17 @@ sudo apt install gh -y
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # install yazi file manager
 cargo install --locked yazi-fm yazi-cli
+```
+
+### Nodejs
+
+```bash
 # install fnm to manager nodejs and npm
 cargo install fnm
 # then use fnm to install nodejs and npm
-fnm install --lst
+fnm install --lts --fnm-dir ~/.local/opt/nodejs
+# Uninstall nodejs
+fnm uninstall --fnm-dir ~/.local/opt/nodejs <version>
 ```
 
 ### Fish Shell

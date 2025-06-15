@@ -11,4 +11,7 @@ if status is-interactive
     # path of nodejs and npm
     set -x PATH $HOME/.local/share/fnm/aliases/default/bin $PATH
     set -x EDITOR nvim
+    # qt.qpa.plugin: Could not find the Qt platform plugin "dxcb" in ""
+    # https://bbs.deepin.org/zh/post/271930
+    set -x QT_QPA_PLATFORM xcb
 end

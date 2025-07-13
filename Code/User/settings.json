@@ -1,14 +1,16 @@
 {
     // hidden 
     "window.menuBarVisibility": "toggle",
-    "workbench.activityBar.location": "hidden",
+    // "workbench.activityBar.location": "hidden",
     // Editor
     "editor.fontSize": 18,
+    "editor.wordWrap": "on",
     // disable minimap
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
     // Files
     "files.encoding": "utf8",
+    // autosave
     "files.autoSave": "afterDelay",
     "files.autoSaveDelay": 1000,
     "files.exclude": {
@@ -99,4 +101,131 @@
     "julia.symbolCacheDownload": true,
     "julia.enableTelemetry": false,
     "git.autofetch": true,
+    
+    // LaTeX
+    // autobuild when file has changed
+    "latex-workshop.latex.autoBuild.run": "onFileChange",
+    // viewer
+    "latex-workshop.view.pdf.viewer": "tab",
+    // Synchronised scrolling for preview and source file
+    // https://github.com/James-Yu/LaTeX-Workshop/issues/379
+    "latex-workshop.synctex.afterBuild.enabled": true,
+    "latex-workshop.latex.outDir": "%DIR%/build",
+    // if true, build latex project and synctex from cursor are showed in right clicked
+    "latex-workshop.showContextMenu": false,
+    "latex-workshop.intellisense.package.enabled": true,
+    // not show error and warning
+    "latex-workshop.message.error.show": false,
+    "latex-workshop.message.warning.show": false,
+    // some tools
+    "latex-workshop.latex.tools": [
+        {
+            "name": "xelatex",
+            "command": "xelatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-output-directory=%OUTDIR%",
+                "%DOCFILE%",
+            ]
+        },
+        {
+            "name": "pdflatex",
+            "command": "pdflatex",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "%DOCFILE%",
+            ]
+        },
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "-synctex=1",
+                "-interaction=nonstopmode",
+                "-file-line-error",
+                "-pdf",
+                "-outdir=%OUTDIR%",
+                "%DOCFILE%",
+            ]
+        },
+        {
+            "name": "bibtex",
+            "command": "bibtex",
+            "args": [
+                "%OUTDIR%/%DOCFILE%"
+            ]
+        }
+    ],
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "XeLaTeX",
+            "tools": [
+                "xelatex"
+            ]
+        },
+        {
+            "name": "PDFLaTeX",
+            "tools": [
+                "pdflatex"
+            ]
+        },
+        {
+            "name": "BibTeX",
+            "tools": [
+                "bibtex"
+            ]
+        },
+        {
+            "name": "LaTeXmk",
+            "tools": [
+                "latexmk"
+            ]
+        },
+        {
+            "name": "xelatex -> bibtex -> xelatex*2",
+            "tools": [
+                "xelatex",
+                "bibtex",
+                "xelatex",
+                "xelatex"
+            ]
+        },
+        {
+            "name": "pdflatex -> bibtex -> pdflatex*2",
+            "tools": [
+                "pdflatex",
+                "bibtex",
+                "pdflatex",
+                "pdflatex"
+            ]
+        },
+    ],
+    "latex-workshop.latex.clean.fileTypes": [
+        "*.aux",
+        "*.bbl",
+        "*.blg",
+        "*.idx",
+        "*.ind",
+        "*.lof",
+        "*.lot",
+        "*.out",
+        "*.toc",
+        "*.acn",
+        "*.acr",
+        "*.alg",
+        "*.glg",
+        "*.glo",
+        "*.gls",
+        "*.ist",
+        "*.fls",
+        "*.log",
+        "*.fdb_latexmk"
+    ],
+    "latex-workshop.latex.autoClean.run": "onFailed",
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
 }

@@ -127,7 +127,7 @@
                 "-interaction=nonstopmode",
                 "-file-line-error",
                 "-output-directory=%OUTDIR%",
-                "%DOCFILE%",
+                "%DOCFILE%"
             ]
         },
         {
@@ -137,19 +137,20 @@
                 "-synctex=1",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "%DOCFILE%",
+                "%DOCFILE%"
             ]
         },
         {
-            "name": "latexmk",
+            "name": "xelatexmk",
             "command": "latexmk",
             "args": [
+                "-xelatex",
                 "-synctex=1",
+                "-shell-escape",
                 "-interaction=nonstopmode",
                 "-file-line-error",
-                "-pdf",
                 "-outdir=%OUTDIR%",
-                "%DOCFILE%",
+                "%DOCFILE%"
             ]
         },
         {
@@ -180,9 +181,9 @@
             ]
         },
         {
-            "name": "LaTeXmk",
+            "name": "XeLaTeXmk",
             "tools": [
-                "latexmk"
+                "xelatexmk"
             ]
         },
         {

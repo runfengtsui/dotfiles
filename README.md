@@ -7,9 +7,10 @@
 下载 [Nerd Font](https://www.nerdfonts.com/) 并安装, 如
 
 ```bash
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/FiraCode.zip
-sudo unzip FiraCode.zip -d ~/.local/share/fonts/FiraCode
-cd /usr/share/fonts/FiraCode
+curl -Lo ~/Download/FiraCode.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
+mkdir -p ~/.local/share/fonts
+sudo unzip ~/Download/FiraCode.zip -d ~/.local/share/fonts/FiraCode
+cd ~/.local/share/fonts/FiraCode
 fc-cache -fv
 ```
 

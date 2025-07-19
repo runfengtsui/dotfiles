@@ -2,16 +2,39 @@
 
 本仓库主要是 `dot config` 文件夹中各应用的配置文件, 附带一些软件的安装说明.
 
-## 字体安装
+## Nerd Font 字体
 
-下载 [Nerd Font](https://www.nerdfonts.com/) 并安装, 如
+使用 [脚本](./scripts/nerdfont.fish) 下载 [Nerd Font](https://www.nerdfonts.com/) 字体并安装.
+
+## WezTerm 终端
+
+[Wez's 终端模拟器](https://wezterm.org/index.html) 集成了类似于 tmux 的功能.
+使用 [脚本](./scripts/wezterm.fish) 添加的第三方源, 该脚本来自于官网, 适用于 Ubuntu/Debian/Deepin.
+添加完成后进行更新并安装:
 
 ```bash
-curl -Lo ~/Download/FiraCode.zip https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/FiraCode.zip
-mkdir -p ~/.local/share/fonts
-sudo unzip ~/Download/FiraCode.zip -d ~/.local/share/fonts/FiraCode
-cd ~/.local/share/fonts/FiraCode
-fc-cache -fv
+apt update
+apt install wezterm
+```
+
+## Alacritty 终端
+
+参考 [Build Instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).
+
+对于 Deepin V23 RC 在安装以下依赖后执行 `cargo build --release` 即可.
+
+```bash
+apt install pkg-config libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
+```
+
+## Neovim 文本编辑器
+
+使用安装 [脚本](./scripts/neovim.fish) 进行安装为稳定版 该安装脚本目前仅适用于 arm64 架构.
+
+系统剪切板支持
+
+```bash
+apt install xclip
 ```
 
 ## 一些编程软件的安装
@@ -54,23 +77,6 @@ fnm uninstall --fnm-dir ~/.local/opt/nodejs <version>
 
 参考 [Building from source](https://github.com/fish-shell/fish-shell/?tab=readme-ov-file#building-from-source).
 
-### Alacritty
-
-参考 [Build Instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).
-
-对于 Deepin V23 RC 在安装以下依赖后执行 `cargo build --release` 即可.
-
-```bash
-apt install pkg-config libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
-```
-
-### Neovim
-
-系统剪切板支持
-
-```bash
-apt install xclip
-```
 
 ### xmake
 
@@ -185,4 +191,3 @@ bili: https://search.bilibili.com/?keyword=%s BiliBili
 you: https://www.youtube.com/results?search_query=%s YouTube
 dict: http://dict.cn/%s Dictionary
 ```
-

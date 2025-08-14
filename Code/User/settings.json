@@ -3,7 +3,8 @@
     "window.menuBarVisibility": "toggle",
     // "workbench.activityBar.location": "hidden",
     // Editor
-    "editor.fontSize": 18,
+    "editor.fontSize": 28,
+    "editor.rulers": [92],
     "editor.wordWrap": "on",
     // disable minimap
     "editor.minimap.enabled": false,
@@ -19,6 +20,7 @@
         "**/__pycache__": true,
     },
     // Terminal
+    "terminal.integrated.fontSize": 22,
     "terminal.integrated.defaultProfile.linux": "fish",
     "terminal.integrated.defaultProfile.windows": "PowerShell",
     // Vim
@@ -94,13 +96,20 @@
     ],
     "vim.normalModeKeyBindings": [
     ],
+
+    "git.autofetch": true,
+
+    // Cpp
+    "clangd.arguments": [
+        "--compile-commands-dir=.vscode"
+    ],
+
     // Julia
     "terminal.integrated.commandsToSkipShell": [
         "language-julia.interrupt"
     ],
     "julia.symbolCacheDownload": true,
     "julia.enableTelemetry": false,
-    "git.autofetch": true,
     
     // LaTeX
     // autobuild when file has changed

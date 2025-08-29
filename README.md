@@ -86,15 +86,41 @@ curl -fsSL https://xmake.io/shget.text | bash
 
 ### poetry
 
+安装 `Poetry` 可以使用如下种方式:
+
+1. 使用官网提供的安装脚本:
+
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
 ```
 
+2. 视为 `Python` 的一个包, 使用 `pip` 进行安装:
+
+```bash
+pip3 install poetry -i https://pypi.tuna.tsinghua.edu.cn/simple/
+```
+
+如果提示 `PEP 668` 错误无法全局安装, 则使用如下命令安装:
+
+```bash
+apt install python3-poetry
+```
+
 ### Julia and juliaup
+
+下载官方提供的版本管理器 `juliaup` 并自动安装 `Release` 版本:
 
 ```bash
 curl -fsSL https://install.julialang.org | sh
 ```
+
+如果想要安装 `LTS` 版本, 则使用如下命令:
+
+```bash
+juliaup add lts
+```
+
+也可以使用 [脚本](./scripts/julia.fish) 下载指定版本.
 
 ### Dynamic Window Manager
 

@@ -7,7 +7,7 @@ if test -f nvim-linux-arm64.tar.gz
     tar -zxvf nvim-linux-arm64.tar.gz
     # Remove the cache file
     rm nvim-linux-arm64.tar.gz
-    # Install NeoVim to /otp/
+    # Install NeoVim to /opt/
     mv nvim-linux-arm64 /opt/
     # Create symbolic link to nvim
     ln -s /opt/nvim-linux-arm64/bin/nvim /usr/local/bin/nvim

@@ -15,7 +15,7 @@ def reporthook(block_num, block_size, total_size):
 ARCH = os.uname().machine
 VERSION = "1.10.10"
 
-url = f"https://julialang-s3.julialang.org/bin/linux/x64/{VERSION.rsplit(".", 1)[0]}/julia-{VERSION}-linux-{ARCH}.tar.gz"
+url = f"https://julialang-s3.julialang.org/bin/linux/{ARCH}/{VERSION.rsplit(".", 1)[0]}/julia-{VERSION}-linux-{ARCH}.tar.gz"
 filename = os.path.basename(url)
 
 with tempfile.TemporaryDirectory() as temp_dir:

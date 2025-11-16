@@ -11,7 +11,12 @@ def reporthook(block_num, block_size, total_size):
     sys.stdout.write(f"\r下载进度: {progress:.2f}%")
     sys.stdout.flush()
 
-ARCH = os.uname().machine
+ARCH = ""
+if os.uname().machine == "x86_64":
+    ARCH = "x86_64"
+elif os.uname().machine == "aarch64":
+    ARCH = "arm64"
+
 url = f"https://github.com/neovim/neovim/releases/download/stable/nvim-linux-{ARCH}.tar.gz"
 filename = os.path.basename(url)
 

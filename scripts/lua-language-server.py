@@ -1,6 +1,5 @@
 #!/usr/bin/env python
-import os
-import sys
+import os, sys, shutil
 import urllib.request, urllib.error
 import tempfile
 import tarfile
@@ -36,16 +35,16 @@ with tempfile.TemporaryDirectory() as temp_dir:
         print(f"\nDownloaded Successfully!")
 
         # Set extract path
-        extract_path = "/opt/lua-language-server"
+        extract_path = os.path.expanduser("~/.local/opt/lua-language-server")
         if os.path.exists(extract_path):
-            os.rmdir(extract_path)
-        os.mkdir(extract_path)
+            shutil.rmtree(extract_path)
+        os.makedirs(extract_path)
         print(f"Extracting to {extract_path} ...")
         with tarfile.open(filename, "r:gz") as tar_file:
             tar_file.extractall(extract_path, filter="data")
 
         binary_path = os.path.join(extract_path, "bin/lua-language-server")
-        symlink_path = "/usr/local/bin/lua-language-server"
+        symlink_path = os.path.expanduser("~/.local/bin/lua-language-server")
         if os.path.exists(symlink_path):
             os.remove(symlink_path)
         print("Creating symbolic link ...")

@@ -47,6 +47,8 @@ with tempfile.TemporaryDirectory() as temp_dir:
         symlink_path = os.path.expanduser("~/.local/bin/lua-language-server")
         if os.path.exists(symlink_path):
             os.remove(symlink_path)
+        else:
+            os.makedirs(os.path.expanduser("~/.local/bin"), exist_ok=True)
         print("Creating symbolic link ...")
         os.symlink(binary_path, symlink_path)
 
@@ -54,10 +56,6 @@ with tempfile.TemporaryDirectory() as temp_dir:
     
     except urllib.error.URLError:
         print("\nDownload Error! Please check your network connection and try again.")
-
-    except PermissionError:
-        print("Permission denied. This script requires sudo privileges for some operations.")
-        print("Please run with sudo.")
 
     except Exception as e:
         print(f"\nAn error occured: {e}")

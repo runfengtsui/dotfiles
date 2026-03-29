@@ -30,34 +30,38 @@ if os.uname().machine == "x86_64":
 elif os.uname().machine == "aarch64":
     ARCH = "arm64"
 
-url = f"https://github.com/neovim/neovim/releases/download/{args.version}/nvim-linux-{ARCH}.tar.gz"
+url = (
+    "https://github.com/neovim/neovim/releases/download/"
+    f"{args.version}/nvim-linux-{ARCH}.tar.gz"
+)
 filename = os.path.basename(url)
+
+localpath = os.path.join(os.path.expanduser('~'), ".local")
+# Create ~/.local/opt/ directory
+os.makedirs(os.path.join(localpath, "opt"), exist_ok=True)
+# Delete old symbolic link
+if os.path.exists(os.path.join(localpath, "bin/nvim")):
+    os.remove(os.path.join(localpath, "bin/nvim"))
 
 with tempfile.TemporaryDirectory() as temp_dir:
     try:
         print(f"Downloading {filename} ...")
         filename = os.path.join(temp_dir, filename)
         urllib.request.urlretrieve(url, filename, reporthook)
-        print(f"\nDownloaded Successfully!")
+        print("\nDownloaded Successfully!")
 
-        print("Extracting to /opt ...")
+        print(f"Extracting to ~/.local/opt/ ...")
         with tarfile.open(filename, "r:gz") as tar_file:
-            tar_file.extractall("/opt/", filter="data")
-
-        if os.path.exists("/usr/local/bin/nvim"):
-            os.remove("/usr/local/bin/nvim")
+            tar_file.extractall(os.path.join(localpath, 'opt'), filter="data")
+        
         print("Creating symbolic link ...")
-        nvim_bin_path = f"/opt/nvim-linux-{ARCH}/bin/nvim"
-        os.symlink(nvim_bin_path, "/usr/local/bin/nvim")
+        os.symlink(os.path.join(localpath, f"opt/nvim-linux-{ARCH}/bin/nvim"),
+                   os.path.join(localpath, "bin/nvim"))
 
         print("NeoVim installation completed successfully!")
     
     except urllib.error.URLError:
-        print("\nDownload Error! Please check your network connection and try again.")
-
-    except PermissionError:
-        print("Permission denied. This script requires sudo privileges for some operations.")
-        print("Please run with sudo.")
+        print("\nDownload Error! Please check your network connection.")
 
     except Exception as e:
         print(f"\nAn error occured: {e}")

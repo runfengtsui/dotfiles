@@ -4,14 +4,13 @@
 
 ## Nerd Font 字体
 
-使用 [脚本](./scripts/nerdfont.fish) 下载 [Nerd Font](https://www.nerdfonts.com/) 字体并安装.
+使用 [脚本](./scripts/nerdfont.py) 下载 [Nerd Font](https://www.nerdfonts.com/) 字体并安装.
 
 ## WezTerm 终端
 
 [Wez's 终端模拟器](https://wezterm.org/index.html) 集成了类似于 tmux 的功能.
 使用 [脚本](./scripts/wezterm.fish) 添加的第三方源, 该脚本来自于官网, 适用于 Ubuntu/Debian/Deepin.
 添加完成后进行更新并安装:
-
 ```bash
 apt update
 apt install wezterm
@@ -20,9 +19,7 @@ apt install wezterm
 ## Alacritty 终端
 
 参考 [Build Instructions](https://github.com/alacritty/alacritty/blob/master/INSTALL.md).
-
 对于 Deepin V23 RC 在安装以下依赖后执行 `cargo build --release` 即可.
-
 ```bash
 apt install pkg-config libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
 ```
@@ -30,9 +27,7 @@ apt install pkg-config libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
 ## Neovim 文本编辑器
 
 使用安装 [脚本](./scripts/neovim.fish) 进行安装为稳定版 该安装脚本目前仅适用于 arm64 架构.
-
 系统剪切板支持
-
 ```bash
 apt install xclip
 ```
@@ -53,15 +48,6 @@ sudo apt update
 sudo apt install gh -y
 ```
 
-### Rust and Cargo
-
-```bash
-# install Rust package manager cargo
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-# install yazi file manager
-cargo install --locked yazi-fm yazi-cli
-```
-
 ### Nodejs
 
 ```bash
@@ -73,11 +59,6 @@ fnm install --lts --fnm-dir ~/.local/opt/nodejs
 fnm uninstall --fnm-dir ~/.local/opt/nodejs <version>
 ```
 
-### Fish Shell
-
-参考 [Building from source](https://github.com/fish-shell/fish-shell/?tab=readme-ov-file#building-from-source).
-
-
 ### xmake
 
 ```bash
@@ -86,41 +67,22 @@ curl -fsSL https://xmake.io/shget.text | bash
 
 ### poetry
 
-安装 `Poetry` 可以使用如下种方式:
-
-1. 使用官网提供的安装脚本:
-
+使用官网提供的安装脚本安装 `Poetry`:
 ```bash
 curl -sSL https://install.python-poetry.org | python3 -
-```
-
-2. 视为 `Python` 的一个包, 使用 `pip` 进行安装:
-
-```bash
-pip3 install poetry -i https://pypi.tuna.tsinghua.edu.cn/simple/
-```
-
-如果提示 `PEP 668` 错误无法全局安装, 则使用如下命令安装:
-
-```bash
-apt install python3-poetry
 ```
 
 ### Julia and juliaup
 
 下载官方提供的版本管理器 `juliaup` 并自动安装 `Release` 版本:
-
 ```bash
 curl -fsSL https://install.julialang.org | sh
 ```
-
 如果想要安装 `LTS` 版本, 则使用如下命令:
-
 ```bash
 juliaup add lts
 ```
-
-也可以使用 [脚本](./scripts/julia.fish) 下载指定版本.
+也可以使用 [脚本](./scripts/julia.py) 下载指定版本.
 
 ### Dynamic Window Manager
 
@@ -167,8 +129,6 @@ sudo apt install org.virtualbox.virtualbox
 
 ### LaTeX 环境配置
 
-参考 [Deepin Linux 安装和搭建LaTex环境](https://zhuanlan.zhihu.com/p/40053417).
-
 ```bash
 # 这个是最基本的, 编译器是 pdflatex, 没有 xelatex
 sudo apt install texlive-base
@@ -188,25 +148,21 @@ sudo apt install latexmk
 
 ## 配置文件
 
-将本仓库中的配置文件软链接到 `~/.config` 文件夹下. 如 `alacritty`, `fish`, `nvim`, `pypoetry`, `yazi` 等:
-
+Linux 系统中将本仓库中的配置文件软链接到 `~/.config` 或 `HOME` 文件夹下, 如:
 ```bash
-ln -s $PWD/alacritty $HOME/.config/alacritty
 ln -s $PWD/fish $HOME/.config/fish
-ln -s $PWD/pypoetry $HOME/.config/pypoetry
-ln -s $PWD/yazi $HOME/.config/yazi
-```
-
-也有的配置文件存储在 `HOME` 目录下, 如
-
-```bash
 ln -s $PWD/tmux/tmux.conf $HOME/.tmux.conf
+```
+Windows 系统中创建符号链接需使用管理员权限打开终端, 如
+```PowerShell
+New-Item -ItemType SymbolicType `
+    -Path $Documents\WindowsPowerShell `
+    -Target $PWD\WindowsPowerShell
 ```
 
 ## 浏览器插件 Vimium 配置
 
 自定义搜索引擎
-
 ```text
 baidu: https://www.baidu.com/s?wd=%s Baidu
 bing: https://bing.com/search?q=%s Bing

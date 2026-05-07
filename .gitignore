@@ -5,6 +5,11 @@ lazy-lock.json
 globalStorage
 workspaceStorage
 History
+caches
+# Visual Studio Code User Files
+machineid
+customBuiltinExtensionsCache.json
+systemExtensionsCache.json
 
 # generated file by fish
 fish_variables

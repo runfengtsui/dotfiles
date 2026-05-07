@@ -1,5 +1,12 @@
 {
+    // Color Theme
+    "workbench.colorTheme": "Dark Modern",
+
     // Neovim
+    // PSA: Use extensions.experimental.affinity to speed up extension
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
     "vscode-neovim.neovimExecutablePaths.win32": "D:\\Scoop\\shims\\nvim.exe",
     "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
     "vscode-neovim.compositeKeys": {
@@ -28,7 +35,7 @@
     "files.exclude": {
         "**/.git": true,
         "**/.venv": true,
-        "**/__pycache__": true,
+        "**/__pycache__": true
     },
 
     // Terminal
@@ -58,7 +65,7 @@
     // autobuild when file has changed
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     // viewer
-    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.viewer": "browser",
     // Synchronised scrolling for preview and source file
     // https://github.com/James-Yu/LaTeX-Workshop/issues/379
     "latex-workshop.synctex.afterBuild.enabled": true,

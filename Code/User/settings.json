@@ -1,14 +1,25 @@
 {
+    // Neovim
+    "vscode-neovim.neovimExecutablePaths.win32": "D:\\Scoop\\shims\\nvim.exe",
+    "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
+    "vscode-neovim.compositeKeys": {
+        "jk": {
+            "command": "vscode-neovim.escape"
+        }
+    },
+
     // hidden 
     "window.menuBarVisibility": "toggle",
     // "workbench.activityBar.location": "hidden",
+
     // Editor
     "editor.fontSize": 28,
-    "editor.rulers": [92],
+    "editor.rulers": [80],
     "editor.wordWrap": "on",
     // disable minimap
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
+
     // Files
     "files.encoding": "utf8",
     // autosave
@@ -19,83 +30,15 @@
         "**/.venv": true,
         "**/__pycache__": true,
     },
+
     // Terminal
     "terminal.integrated.fontSize": 22,
     "terminal.integrated.defaultProfile.linux": "fish",
     "terminal.integrated.defaultProfile.windows": "PowerShell",
-    // Vim
-    // use system clipboard
-    "vim.useSystemClipboard": true,
-    // "vim.useCtrlKeys": true,
-    "vim.leader": ";",
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [ "j", "k" ],
-            "after": [ "<Esc>" ]
-        }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        // close
-        {
-            "before": [ "<leader>", "q" ],
-            "commands": [ ":q" ]
-        },
-        // focus terminal
-        {
-            "before": [ "<leader>", "t" ],
-            "commands": [ "workbench.action.terminal.focus" ]
-        },
-        // split window
-        {
-            "before": [ "<leader>", "v" ],
-            "commands": [ ":vsplit" ]
-        },
-        {
-            "before": [ "<leader>", "s" ],
-            "commands": [ ":split" ]
-        },
-        // panes
-        {
-            "before": [ "<leader>", "h" ],
-            "commands": [ "workbench.action.focusLeftGroup" ]
-        },
-        {
-            "before": [ "<leader>", "j" ],
-            "commands": [ "workbench.action.focusBelowGroup" ]
-        },
-        {
-            "before": [ "<leader>", "k" ],
-            "commands": [ "workbench.action.focusAboveGroup" ]
-        },
-        {
-            "before": [ "<leader>", "l" ],
-            "commands": [ "workbench.action.focusRightGroup" ]
-        },
-        // tab next/prev
-        {
-            "before": [ "t", "p" ],
-            "commands": [ ":tabprev" ]
-        },
-        {
-            "before": [ "t", "n" ],
-            "commands": [ ":tabnext" ]
-        },
-        // debug
-        {
-            "before": [ "<leader>", "t", "b" ],
-            "commands": [ "editor.debug.action.toggleBreakpoint" ]
-        },
-        {
-            "before": [ "<leader>", "e" ],
-            "commands": [ "workbench.view.explorer" ]
-        },
-        {
-            "before": [ "<leader>", "f" ],
-            "commands": [ "workbench.files.focus"]
-        }
-    ],
-    "vim.normalModeKeyBindings": [
-    ],
+    // {
+    //     "before": [ "<leader>", "t", "b" ],
+    //     "commands": [ "editor.debug.action.toggleBreakpoint" ]
+    // },
 
     "git.autofetch": true,
 
@@ -212,7 +155,7 @@
                 "pdflatex",
                 "pdflatex"
             ]
-        },
+        }
     ],
     "latex-workshop.latex.clean.fileTypes": [
         "*.aux",
@@ -237,5 +180,5 @@
     ],
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.recipe.default": "lastUsed",
-    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click"
 }

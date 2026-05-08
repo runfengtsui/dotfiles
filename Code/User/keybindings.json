@@ -1,24 +1,52 @@
 [
     // Move to editor and close the terminal
     {
-        "key": "; k",
+        "key": "oem_1 k",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
     {
-        "key": "; k",
+        "key": "oem_1 k",
         "command": "workbench.action.terminal.toggleTerminal",
         "when": "terminalFocus"
     },
     // Move to editor and close the sidebar
     {
-        "key": "; l",
+        "key": "oem_1 l",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "explorerViewletFocus"
     },
     {
-        "key": "; l",
+        "key": "oem_1 l",
         "command": "workbench.action.closeSidebar",
         "when": "explorerViewletFocus"
     },
+    // Use `Ctrl+\` to toggle terminal not split Editor
+    {
+        "key": "ctrl+oem_5",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+oem_3",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+oem_5",
+        "command": "-workbench.action.splitEditor"
+    },
+    // Remove Ctrl+Alt+b/v/j keys provided by LatexWorkshop extension
+    {
+        "key": "ctrl+alt+b",
+        "command": "-latex-workshop.build"
+    },
+    {
+        "key": "ctrl+alt+v",
+        "command": "-latex-workshop.view"
+    },
+    {
+        "key": "ctrl+alt+j",
+        "command": "-latex-workshop.synctex"
+    }
 ]

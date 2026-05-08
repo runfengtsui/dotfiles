@@ -1,7 +1,36 @@
 {
-    // Color Theme
+    /* --------------------------------- UI --------------------------------- */
+    // Workbench
     "workbench.colorTheme": "Dark Modern",
+    // Hide the sidebar
+    "workbench.activityBar.location": "hidden",
+    // Editor
+    "editor.fontSize": 28,
+    "editor.rulers": [80],
+    "editor.wordWrap": "on",
+    // Disable minimap
+    "editor.minimap.enabled": false,
+    "editor.lineNumbers": "relative",
 
+    // Files
+    "files.encoding": "utf8",
+    // Autosave
+    "files.autoSave": "afterDelay",
+    "files.autoSaveDelay": 1000,
+    "files.exclude": {
+        "**/.git": true,
+        "**/.venv": true,
+        "**/__pycache__": true
+    },
+
+    // Terminal
+    "terminal.integrated.fontSize": 22,
+    "terminal.integrated.defaultProfile.linux": "fish",
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+
+    "git.autofetch": true,
+    
+    /* ----------------------------- Extensions ----------------------------- */
     // Neovim
     // PSA: Use extensions.experimental.affinity to speed up extension
     "extensions.experimental.affinity": {
@@ -15,53 +44,7 @@
         }
     },
 
-    // hidden 
-    "window.menuBarVisibility": "toggle",
-    // "workbench.activityBar.location": "hidden",
-
-    // Editor
-    "editor.fontSize": 28,
-    "editor.rulers": [80],
-    "editor.wordWrap": "on",
-    // disable minimap
-    "editor.minimap.enabled": false,
-    "editor.lineNumbers": "relative",
-
-    // Files
-    "files.encoding": "utf8",
-    // autosave
-    "files.autoSave": "afterDelay",
-    "files.autoSaveDelay": 1000,
-    "files.exclude": {
-        "**/.git": true,
-        "**/.venv": true,
-        "**/__pycache__": true
-    },
-
-    // Terminal
-    "terminal.integrated.fontSize": 22,
-    "terminal.integrated.defaultProfile.linux": "fish",
-    "terminal.integrated.defaultProfile.windows": "PowerShell",
-    // {
-    //     "before": [ "<leader>", "t", "b" ],
-    //     "commands": [ "editor.debug.action.toggleBreakpoint" ]
-    // },
-
-    "git.autofetch": true,
-
-    // Cpp
-    "clangd.arguments": [
-        "--compile-commands-dir=.vscode"
-    ],
-
-    // Julia
-    "terminal.integrated.commandsToSkipShell": [
-        "language-julia.interrupt"
-    ],
-    "julia.symbolCacheDownload": true,
-    "julia.enableTelemetry": false,
-    
-    // LaTeX
+    // LaTeX Workshop
     // autobuild when file has changed
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     // viewer
@@ -187,5 +170,17 @@
     ],
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.recipe.default": "lastUsed",
-    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click"
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
+
+    // Cpp - Clangd
+    "clangd.arguments": [
+        "--compile-commands-dir=.vscode"
+    ],
+
+    // Julia
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.symbolCacheDownload": true,
+    "julia.enableTelemetry": false
 }

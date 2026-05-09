@@ -5,6 +5,7 @@
     // Hide the sidebar
     "workbench.activityBar.location": "hidden",
     // Editor
+    "editor.fontFamily": "FiraCode Nerd Font",
     "editor.fontSize": 28,
     "editor.rulers": [80],
     "editor.wordWrap": "on",

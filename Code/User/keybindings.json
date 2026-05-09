@@ -14,12 +14,12 @@
     {
         "key": "oem_1 l",
         "command": "workbench.action.focusActiveEditorGroup",
-        "when": "explorerViewletFocus"
+        "when": "sideBarFocus"
     },
     {
         "key": "oem_1 l",
         "command": "workbench.action.closeSidebar",
-        "when": "explorerViewletFocus"
+        "when": "sideBarFocus"
     },
     // Use `Ctrl+\` to toggle terminal not split Editor
     {
@@ -36,17 +36,15 @@
         "key": "ctrl+oem_5",
         "command": "-workbench.action.splitEditor"
     },
-    // Remove Ctrl+Alt+b/v/j keys provided by LatexWorkshop extension
+    // Use Ctrl+j/k to select suggestion
     {
-        "key": "ctrl+alt+b",
-        "command": "-latex-workshop.build"
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     },
     {
-        "key": "ctrl+alt+v",
-        "command": "-latex-workshop.view"
-    },
-    {
-        "key": "ctrl+alt+j",
-        "command": "-latex-workshop.synctex"
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
     }
 ]

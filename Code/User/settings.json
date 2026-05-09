@@ -44,6 +44,24 @@
         }
     },
 
+    // Cpp - Clangd
+    "clangd.arguments": [
+        "--compile-commands-dir=.vscode"
+    ],
+
+    // Julia
+    "terminal.integrated.commandsToSkipShell": [
+        "language-julia.interrupt"
+    ],
+    "julia.symbolCacheDownload": true,
+    "julia.enableTelemetry": false,
+
+    /* -------------------------------- LaTeX ------------------------------- */
+    "[latex]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true
+    },
+
     // LaTeX Workshop
     // autobuild when file has changed
     "latex-workshop.latex.autoBuild.run": "onFileChange",
@@ -170,17 +188,5 @@
     ],
     "latex-workshop.latex.autoClean.run": "onFailed",
     "latex-workshop.latex.recipe.default": "lastUsed",
-    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
-
-    // Cpp - Clangd
-    "clangd.arguments": [
-        "--compile-commands-dir=.vscode"
-    ],
-
-    // Julia
-    "terminal.integrated.commandsToSkipShell": [
-        "language-julia.interrupt"
-    ],
-    "julia.symbolCacheDownload": true,
-    "julia.enableTelemetry": false
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click"
 }

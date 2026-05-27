@@ -7,7 +7,7 @@
             "\t$4 & $5 & $6 \\\\\\\\",
             "\t$7 & $8 & $9 \\\\\\\\",
             "\\end{pmatrix}$0"
-        ]
+        ],
         "description": "Create 3 by 3 matrix."
     },
     "autofit parentheses": {
@@ -15,9 +15,9 @@
         "body": [ "\\left($1\\right)$0" ],
         "description": "Create adaptive size parentheses."
     },
-    "fraction": {
-        "prefix": "\\ff",
-        "body": [ "\\frac{$1}{$2}$0" ],
-        "description": "Create fraction."
-    },
+    "logarithm": {
+        "prefix": "\\log",
+        "body": [ "\\log_{$1} $0" ],
+        "description": "Logarithm of x with respect to base a."
+    }
 }

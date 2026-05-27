@@ -1,7 +1,7 @@
 {
     "inline math": {
         "prefix": "mk",
-        "body": "\\($1\\) $0",
+        "body": "\\($1\\)$0",
         "description": "Insert inline math formula"
     },
     "block math": {
@@ -13,9 +13,4 @@
         ],
         "description": "Insert display math block formula"
     },
-    "Greek Omega": {
-        "prefix": ";O",
-        "body": "\\Omega",
-        "description": "insert greek Omega"
-    }
 }

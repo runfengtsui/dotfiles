@@ -6,10 +6,13 @@ globalStorage
 workspaceStorage
 History
 caches
+profiles
 # Visual Studio Code User Files
 machineid
 customBuiltinExtensionsCache.json
 systemExtensionsCache.json
+chatLanguageModels.json
+agent-sessions.code-workspace
 
 # generated file by fish
 fish_variables

@@ -2,13 +2,10 @@
     /* --------------------------------- UI --------------------------------- */
     // Workbench
     "workbench.colorTheme": "Dark Modern",
-    // Hide the sidebar
-    "workbench.activityBar.location": "hidden",
     // Editor
     "editor.fontFamily": "FiraCode Nerd Font",
-    "editor.fontSize": 28,
+    "editor.fontSize": 18,
     "editor.rulers": [80],
-    "editor.wordWrap": "on",
     // Disable minimap
     "editor.minimap.enabled": false,
     "editor.lineNumbers": "relative",
@@ -32,30 +29,58 @@
     "git.autofetch": true,
     
     /* ----------------------------- Extensions ----------------------------- */
-    // Neovim
-    // PSA: Use extensions.experimental.affinity to speed up extension
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
-    "vscode-neovim.neovimExecutablePaths.win32": "D:\\Scoop\\shims\\nvim.exe",
-    "vscode-neovim.neovimExecutablePaths.linux": "/usr/local/bin/nvim",
-    "vscode-neovim.compositeKeys": {
-        "jk": {
-            "command": "vscode-neovim.escape"
+    // Vim
+    "vim.useSystemClipboard": true,
+    "vim.leader": ";", 
+    "vim.insertModeKeyBindings": [
+        {
+          "before": ["j", "k"],
+          "after": ["<Esc>"]
         }
-    },
+    ],
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["<leader>", "t"],
+            "commands": [
+                "workbench.action.terminal.toggleTerminal"
+            ]
+        }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [ "<leader>", "r", "n" ],
+            "commands": [
+                "editor.action.rename"
+            ]
+        }
+    ],
 
-    // Cpp - Clangd
+    /* --------------------------------- Cpp -------------------------------- */
+    "[cpp]":{
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 80
+    },
     "clangd.arguments": [
         "--compile-commands-dir=.vscode"
     ],
 
-    // Julia
+    /* -------------------------------- Julia ------------------------------- */
+    "[julia]":{
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 80
+    },
+    "julia.symbolCacheDownload": true,
+    "julia.enableTelemetry": false,
+    "julia.juliaup.install.hint": false,
     "terminal.integrated.commandsToSkipShell": [
         "language-julia.interrupt"
     ],
-    "julia.symbolCacheDownload": true,
-    "julia.enableTelemetry": false,
+
+    /* ------------------------------- Python ------------------------------- */
+    "[python]":{
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 80
+    },
 
     /* -------------------------------- LaTeX ------------------------------- */
     "[latex]": {
@@ -67,7 +92,8 @@
     // autobuild when file has changed
     "latex-workshop.latex.autoBuild.run": "onFileChange",
     // viewer
-    "latex-workshop.view.pdf.viewer": "browser",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
     // Synchronised scrolling for preview and source file
     // https://github.com/James-Yu/LaTeX-Workshop/issues/379
     "latex-workshop.synctex.afterBuild.enabled": true,
@@ -188,6 +214,5 @@
         "*.fdb_latexmk"
     ],
     "latex-workshop.latex.autoClean.run": "onFailed",
-    "latex-workshop.latex.recipe.default": "lastUsed",
-    "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click"
+    "latex-workshop.latex.recipe.default": "lastUsed"
 }

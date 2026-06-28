@@ -25,4 +25,6 @@ function proxy {
 }
 
 # Environment Variables
-$Env:CC = "gcc"
+$ENV:CC = "gcc"
+## Yazi: relying on `file` to detect the mime-type of the file.
+$ENV:YAZI_FILE_ONE = "D:\\Scoop\\apps\\git\\current\\usr\\bin\\file.exe"

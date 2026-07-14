@@ -1,29 +1,21 @@
 #!/usr/bin/env python
 import argparse
+from pathlib import Path
 import os
-import sys
-import urllib.request, urllib.error
-import tempfile
-import tarfile
+from installer import uninstall, download, LOCAL_OPT, LOCAL_BIN
+import tempfile, tarfile
 
-# 获取安装版本
+# Get the installation version
 parser = argparse.ArgumentParser()
 parser.add_argument(
     "-v", "--version",
     choices=["stable", "nightly"],
     default="stable",
-    help="NeoVim 稳定版本 (stable, 默认) 或开发版本 (nightly)"
+    help="Neovim stable version (default) or nightly version"
 )
 args = parser.parse_args()
 
-# 下载进度条函数
-def reporthook(block_num, block_size, total_size):
-    downloaded = block_num * block_size
-    progress = downloaded / total_size * 100
-    sys.stdout.write(f"\r下载进度: {progress:.2f}%")
-    sys.stdout.flush()
-
-# 获取系统架构
+# Get the system architecture
 ARCH = ""
 if os.uname().machine == "x86_64":
     ARCH = "x86_64"
@@ -36,32 +28,28 @@ url = (
 )
 filename = os.path.basename(url)
 
-localpath = os.path.join(os.path.expanduser('~'), ".local")
-# Create ~/.local/opt/ directory
-os.makedirs(os.path.join(localpath, "opt"), exist_ok=True)
-# Delete old symbolic link
-if os.path.exists(os.path.join(localpath, "bin/nvim")):
-    os.remove(os.path.join(localpath, "bin/nvim"))
+LOCAL_OPT.mkdir(exist_ok=True)
+LOCAL_BIN.mkdir(exist_ok=True)
 
+# Uninstallation
+uninstall("nvim", LOCAL_OPT)
+
+# Installation
 with tempfile.TemporaryDirectory() as temp_dir:
     try:
-        print(f"Downloading {filename} ...")
-        filename = os.path.join(temp_dir, filename)
-        urllib.request.urlretrieve(url, filename, reporthook)
-        print("\nDownloaded Successfully!")
+        download(url, temp_dir)
 
-        print(f"Extracting to ~/.local/opt/ ...")
-        with tarfile.open(filename, "r:gz") as tar_file:
-            tar_file.extractall(os.path.join(localpath, 'opt'), filter="data")
-        
+        print(f"Extracting to {LOCAL_OPT} ...")
+        with tarfile.open(Path(temp_dir) / filename, "r:gz") as tar_file:
+            tar_file.extractall(LOCAL_OPT, filter="data")
+
         print("Creating symbolic link ...")
-        os.symlink(os.path.join(localpath, f"opt/nvim-linux-{ARCH}/bin/nvim"),
-                   os.path.join(localpath, "bin/nvim"))
+        os.symlink(
+            LOCAL_OPT / f"nvim-linux-{ARCH}" / "bin" / "nvim",
+            LOCAL_BIN / "nvim"
+        )
 
-        print("NeoVim installation completed successfully!")
-    
-    except urllib.error.URLError:
-        print("\nDownload Error! Please check your network connection.")
+        print("Neovim installation completed successfully!")
 
     except Exception as e:
         print(f"\nAn error occured: {e}")

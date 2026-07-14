@@ -1,50 +1,46 @@
 #!/usr/bin/env python
-import sys, os, shutil
-import urllib.request, urllib.error
-import tempfile
-import tarfile
+import os
+import argparse
+from installer import uninstall, download, LOCAL_OPT, LOCAL_BIN
+import tempfile, tarfile
+from pathlib import Path
 
-def reporthook(block_num, block_size, total_size):
-    downloaded = block_num * block_size
-    progress = downloaded / total_size * 100
-    sys.stdout.write(f"\r下载进度: {progress:.2f}%")
-    sys.stdout.flush()
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-v", "--version",
+    help = "Version of Julia to be downloaded."
+)
+args = parser.parse_args()
 
-VERSION = "1.10.10"
-
-# uname -m in bash
 ARCH = os.uname().machine
 SARCH = "x64" if ARCH == "x86_64" else "aarch64"
 
 url = (
     "https://mirrors.tuna.tsinghua.edu.cn/julia-releases/bin/linux/"
-    f"{SARCH}/{VERSION.rsplit(".", 1)[0]}/julia-{VERSION}-linux-{ARCH}.tar.gz"
+    f"{SARCH}/{args.version.rsplit(".", 1)[0]}/"
+    f"julia-{args.version}-linux-{ARCH}.tar.gz"
 )
 filename = os.path.basename(url)
 
+# Uninstallation
+uninstall("julia", LOCAL_OPT)
+
+# Installation
 with tempfile.TemporaryDirectory() as temp_dir:
     try:
-        print(f"Downloading {filename} ...")
-        filename = os.path.join(temp_dir, filename)
-        urllib.request.urlretrieve(url, filename, reporthook)
-        print("\nDownloaded Successfully!")
+        download(url, temp_dir)
 
-        extract_path = os.path.expanduser("~/.local/opt")
-        if os.path.exists(os.path.join(extract_path, f"julia-{VERSION}")):
-            shutil.rmtree(os.path.join(extract_path, f"julia-{VERSION}"))
-        print(f"Extracting to {extract_path} ...")
-        with tarfile.open(filename, "r:gz") as tar_file:
-            tar_file.extractall(extract_path, filter="data")
+        print(f"Extracting to {LOCAL_OPT} ...")
+        with tarfile.open(Path(temp_dir) / filename, "r:gz") as tar_file:
+            tar_file.extractall(LOCAL_OPT, filter="data")
 
         print("Creating symbolic link ...")
-        binary_path = os.path.join(extract_path, f"julia-{VERSION}/bin/julia")
-        os.symlink(binary_path, os.path.expanduser("~/.local/bin/julia"))
+        os.symlink(
+            LOCAL_OPT / f"julia-{args.version}" / "bin" / "julia",
+            LOCAL_BIN / "julia"
+        )
 
         print("Julia installation completed successfully!")
 
-    except urllib.error.URLError:
-        print("\nDownload Error! Please check your network connection and try again.")
-
     except Exception as e:
         print(f"\nAn error occured: {e}")
-

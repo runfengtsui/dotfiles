@@ -1,61 +1,56 @@
 #!/usr/bin/env python
-import os, sys, shutil
-import urllib.request, urllib.error
-import tempfile
-import tarfile
+import argparse
+import os
+from installer import uninstall, download, LOCAL_OPT, LOCAL_BIN
+import tempfile, tarfile
+from pathlib import Path
 
-# 下载进度条函数
-def reporthook(block_num, block_size, total_size):
-    downloaded = block_num * block_size
-    progress = downloaded / total_size * 100
-    sys.stdout.write(f"\r下载进度: {progress:.2f}%")
-    sys.stdout.flush()
+# Get the installation version from CLI
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-v", "--version",
+    help = "Version of lua-language-server to be downloaded."
+)
+args = parser.parse_args()
 
-# Get architecture of OS
+# Architecture of OS
 ARCH = ""
 if os.uname().machine == "x86_64":
     ARCH = "x64"
 elif os.uname().machine == "aarch64":
     ARCH = "arm64"
 
-# Set version installed
-VERSION = "3.15.0"
-
 url = (
     "https://github.com/LuaLS/lua-language-server/releases/download/"
-    f"{VERSION}/lua-language-server-{VERSION}-linux-{ARCH}.tar.gz"
+    f"{args.version}/lua-language-server-{args.version}-linux-{ARCH}.tar.gz"
 )
 filename = os.path.basename(url)
 
+install_path = LOCAL_OPT / "lua-language-server"
+# Create directories
+LOCAL_OPT.mkdir(exist_ok=True)
+LOCAL_BIN.mkdir(exist_ok=True)
+install_path.mkdir(exist_ok=True)
+
+# Uninstallation
+uninstall("lua-language-server", LOCAL_OPT)
+
+# Installation
 with tempfile.TemporaryDirectory() as temp_dir:
     try:
-        print(f"Downloading {filename} ...")
-        filename = os.path.join(temp_dir, filename)
-        urllib.request.urlretrieve(url, filename, reporthook)
-        print(f"\nDownloaded Successfully!")
+        download(url, temp_dir)
 
-        # Set extract path
-        extract_path = os.path.expanduser("~/.local/opt/lua-language-server")
-        if os.path.exists(extract_path):
-            shutil.rmtree(extract_path)
-        os.makedirs(extract_path)
-        print(f"Extracting to {extract_path} ...")
-        with tarfile.open(filename, "r:gz") as tar_file:
-            tar_file.extractall(extract_path, filter="data")
+        print(f"Extracting to {install_path} ...")
+        with tarfile.open(Path(temp_dir) / filename, "r:gz") as tar_file:
+            tar_file.extractall(install_path, filter="data")
 
-        binary_path = os.path.join(extract_path, "bin/lua-language-server")
-        symlink_path = os.path.expanduser("~/.local/bin/lua-language-server")
-        if os.path.exists(symlink_path):
-            os.remove(symlink_path)
-        else:
-            os.makedirs(os.path.expanduser("~/.local/bin"), exist_ok=True)
         print("Creating symbolic link ...")
-        os.symlink(binary_path, symlink_path)
+        os.symlink(
+            install_path / "bin" / "lua-language-server",
+            LOCAL_BIN / "lua-language-server"
+        )
 
         print("lua-language-server installation completed successfully!")
-    
-    except urllib.error.URLError:
-        print("\nDownload Error! Please check your network connection and try again.")
 
     except Exception as e:
         print(f"\nAn error occured: {e}")

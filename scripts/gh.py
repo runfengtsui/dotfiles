@@ -1,49 +1,50 @@
 #!/usr/bin/env python
-import sys
 import os
-import tempfile
-import urllib.request, urllib.error
-import tarfile
+import argparse
+from pathlib import Path
+from installer import uninstall, download, LOCAL_OPT, LOCAL_BIN
+import tempfile, tarfile
 
-def reporthook(block_num, block_size, total_size):
-    downloaded = block_num * block_size
-    progress = downloaded / total_size * 100
-    sys.stdout.write(f"Downloading Prograes: {progress:.2f}%")
-    sys.stdout.flush()
+# Get the installation version from CLI
+parser = argparse.ArgumentParser()
+parser.add_argument(
+    "-v", "--version",
+    help = "Version of gh to be downloaded."
+)
+args = parser.parse_args()
 
+# Architecture of OS
+ARCH = ""
 if os.uname().machine == "x86_64":
     ARCH = "amd64"
 elif os.uname().machine == "aarch64":
     ARCH = "arm64"
 
-VERSION = "2.82.0"
-url = f"https://github.com/cli/cli/releases/download/v{VERSION}/gh_{VERSION}_linux_{ARCH}.tar.gz"
+url = (
+    "https://github.com/cli/cli/releases/download/"
+    f"v{args.version}/gh_{args.version}_linux_{ARCH}.tar.gz"
+)
 filename = os.path.basename(url)
 
+# Uninstallation
+uninstall("gh", LOCAL_OPT)
+
+# Installation
 with tempfile.TemporaryDirectory() as temp_dir:
     try:
-        print(f"Downloading {filename} ...")
-        filename = os.path.join(temp_dir, filename)
-        urllib.request.urlretrieve(url, filename, reporthook)
-        print("\nDownloaded Successfully!")
+        download(url, temp_dir)
 
-        print("Extracting to /opt ...")
-        with tarfile.open(filename, "r:gz") as tar_file:
-            tar_file.extractall("/opt/", filter="data")
+        print(f"Extracting to {LOCAL_OPT} ...")
+        with tarfile.open(Path(temp_dir) / filename, "r:gz") as tar_file:
+            tar_file.extractall(LOCAL_OPT, filter="data")
 
         print("Creating symbolic link ...")
-        julia_bin_path = f"/opt/gh_{VERSION}_linux_{ARCH}/bin/gh"
-        os.symlink(julia_bin_path, "/usr/local/bin/gh")
+        os.symlink(
+            LOCAL_OPT / f"gh_{args.version}_linux_{ARCH}" / "bin" / "gh",
+            LOCAL_BIN / "gh"
+        )
 
         print("gh installation completed successfully!")
 
-    except urllib.error.URLError:
-        print("\nDownload Error! Please check your network connection and try again.")
-
-    except PermissionError:
-        print("Permission denied. This script requires sudo privileges for some operations.")
-        print("Please run with sudo.")
-
     except Exception as e:
         print(f"\nAn error occured: {e}")
-

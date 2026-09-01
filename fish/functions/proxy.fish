@@ -15,9 +15,10 @@ function proxy
             set -e HTTP_PROXY
             set -e HTTPS_PROXY
             set -e NO_PROXY
+            set -e all_proxy
             echo -e "\033[31m[x] Proxy Off!\033[0m"
         case "status"
-            if test -n "$http_proxy"
+            if env | grep -qi proxy
                 echo -e "\033[32m[√] Proxy is On!\033[0m"
                 echo "http_proxy: $http_proxy"
                 echo "https_proxy: $https_proxy"

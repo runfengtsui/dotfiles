@@ -16,3 +16,6 @@ agent-sessions.code-workspace
 
 # generated file by fish
 fish_variables
+
+# OpenCode
+service.json

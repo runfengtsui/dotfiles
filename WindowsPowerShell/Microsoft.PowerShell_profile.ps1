@@ -12,15 +12,33 @@ function which ($command) {
 
 # Proxy
 function proxy {
-    if ($args[0] -eq "on") {
-        $ENV:HTTP_PROXY = "http://127.0.0.1:7890"
-        $ENV:HTTPS_PROXY = "http://127.0.0.1:7890"
-        Write-Host "Proxy Enabled!" -ForegroundColor Green
-    }
-    if ($args[0] -eq "off") {
-        $ENV:HTTP_PROXY = $NULL
-        $ENV:HTTPS_PROXY = $NULL
-        Write-Host "Proxy Disabled!" -ForegroundColor Yellow
+    switch ($args[0]) {
+        "on" {
+            $ENV:HTTP_PROXY  = "http://127.0.0.1:7890"
+            $ENV:HTTPS_PROXY = "http://127.0.0.1:7890"
+            Write-Host "Proxy Enabled!" -ForegroundColor Green
+        }
+        "off" {
+            $ENV:HTTP_PROXY  = $null
+            $ENV:HTTPS_PROXY = $null
+            Write-Host "Proxy Disabled!" -ForegroundColor Yellow
+        }
+        "status" {
+            $http  = $ENV:HTTP_PROXY
+            $https = $ENV:HTTPS_PROXY
+
+            if ([string]::IsNullOrWhiteSpace($http) -and [string]::IsNullOrWhiteSpace($https)) {
+                Write-Host "Proxy Status: OFF" -ForegroundColor Yellow
+            }
+            else {
+                Write-Host "Proxy Status: ON" -ForegroundColor Green
+                Write-Host "  HTTP_PROXY  = $http"
+                Write-Host "  HTTPS_PROXY = $https"
+            }
+        }
+        default {
+            Write-Host "Usage: proxy [on|off|status]" -ForegroundColor Cyan
+        }
     }
 }
 

@@ -1,0 +1,6 @@
+[keyboard]
+bindings = [
+    # https://stackoverflow.com/questions/16359878/how-to-map-shift-enter/42461580#42461580
+    { key = "Return", mods = "Shift", chars = "\u001B[13;2u" },
+    { key = "W", mods = "Control", action = "Quit" }
+]

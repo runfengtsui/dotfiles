@@ -1,16 +1,12 @@
 {
     "inline math": {
         "prefix": "mk",
-        "body": "\\($1\\)$0",
-        "description": "Insert inline math formula"
+        "body": "$$1$",
+        "description": "insert inline math"
     },
-    "block math": {
-        "prefix": "mb",
-        "body": [
-            "\\[",
-            "$1",
-            "\\]"
-        ],
-        "description": "Insert display math block formula"
-    },
+    "adaptive parentheses": {
+        "prefix": "\\lp",
+        "body": "\\left($1\\right)",
+        "description": "insert adaptive-sized parentheses"
+    }
 }

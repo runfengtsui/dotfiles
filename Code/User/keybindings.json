@@ -1,50 +1,16 @@
+// Place your key bindings in this file to override the defaults
 [
-    // Move to editor and close the terminal
     {
-        "key": "oem_1 k",
+        "key": "alt+m",
+        "command": "workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "ctrl+b",
+        "command": "-workbench.action.toggleSidebarVisibility"
+    },
+    {
+        "key": "alt+k",
         "command": "workbench.action.focusActiveEditorGroup",
         "when": "terminalFocus"
     },
-    {
-        "key": "oem_1 k",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminalFocus"
-    },
-    // Move to editor and close the sidebar
-    {
-        "key": "oem_1 l",
-        "command": "workbench.action.focusActiveEditorGroup",
-        "when": "sideBarFocus"
-    },
-    {
-        "key": "oem_1 l",
-        "command": "workbench.action.closeSidebar",
-        "when": "sideBarFocus"
-    },
-    // Use `Ctrl+\` to toggle terminal not split Editor
-    {
-        "key": "ctrl+oem_5",
-        "command": "workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
-    },
-    {
-        "key": "ctrl+oem_3",
-        "command": "-workbench.action.terminal.toggleTerminal",
-        "when": "terminal.active"
-    },
-    {
-        "key": "ctrl+oem_5",
-        "command": "-workbench.action.splitEditor"
-    },
-    // Use Ctrl+j/k to select suggestion
-    {
-        "key": "ctrl+j",
-        "command": "selectNextSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    },
-    {
-        "key": "ctrl+k",
-        "command": "selectPrevSuggestion",
-        "when": "suggestWidgetMultipleSuggestions && suggestWidgetVisible && textInputFocus"
-    }
 ]

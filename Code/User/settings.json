@@ -4,7 +4,7 @@
     "workbench.colorTheme": "Dark Modern",
     // Editor
     "editor.fontFamily": "FiraCode Nerd Font",
-    "editor.fontSize": 18,
+    "editor.fontSize": 13,
     "editor.rulers": [80],
     // Disable minimap
     "editor.minimap.enabled": false,
@@ -22,7 +22,7 @@
     },
 
     // Terminal
-    "terminal.integrated.fontSize": 22,
+    "terminal.integrated.fontSize": 24,
     "terminal.integrated.defaultProfile.linux": "fish",
     "terminal.integrated.defaultProfile.windows": "PowerShell",
 
@@ -39,12 +39,6 @@
         }
     ],
     "vim.normalModeKeyBindings": [
-        {
-            "before": ["<leader>", "t"],
-            "commands": [
-                "workbench.action.terminal.toggleTerminal"
-            ]
-        }
     ],
     "vim.normalModeKeyBindingsNonRecursive": [
         {
@@ -52,7 +46,39 @@
             "commands": [
                 "editor.action.rename"
             ]
-        }
+        },
+        // Toggle Sidebar Visibility
+        {
+            "before": [ "<leader>", "e" ],
+            "commands": [
+                // "workbench.action.toggleSidebarVisibility"
+                "yazi-vscode.toggle"
+            ]
+        },
+        {
+            "before": [ "<leader>", "w", "d" ],
+            "commands": [
+                "workbench.action.closeActiveEditor"
+            ]
+        },
+        {
+            "before": ["<leader>", "t"],
+            "commands": [
+                "workbench.action.terminal.toggleTerminal"
+            ]
+        },
+        {
+            "before": [ "<leader>", "l", "v" ],
+            "commands": [
+                "latex-workshop.synctex"
+            ]
+        },
+        {
+            "before": [ "<leader>", "o", "i" ],
+            "commands": [
+                "opencode.openTerminal"
+            ]
+        },
     ],
 
     /* --------------------------------- Cpp -------------------------------- */
@@ -82,15 +108,26 @@
         "editor.wordWrapColumn": 80
     },
 
+    /* ------------------------------ Markdown ------------------------------ */
+    "[markdown]": {
+        // Enable Snippets
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        },
+    },
+
     /* -------------------------------- LaTeX ------------------------------- */
     "[latex]": {
         "editor.tabSize": 2,
-        "editor.insertSpaces": true
+        "editor.indentSize": "tabSize",
+        "editor.insertSpaces": true,
     },
 
     // LaTeX Workshop
     // autobuild when file has changed
-    "latex-workshop.latex.autoBuild.run": "onFileChange",
+    "latex-workshop.latex.autoBuild.run": "never",
     // viewer
     "latex-workshop.view.pdf.viewer": "tab",
     "latex-workshop.view.pdf.internal.synctex.keybinding": "double-click",
@@ -214,5 +251,9 @@
         "*.fdb_latexmk"
     ],
     "latex-workshop.latex.autoClean.run": "onFailed",
-    "latex-workshop.latex.recipe.default": "lastUsed"
+    "latex-workshop.latex.recipe.default": "lastUsed",
+    "files.associations": {
+        "*.md": "markdown"
+    },
+    "python.analysis.typeCheckingMode": "basic",
 }
